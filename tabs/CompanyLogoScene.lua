@@ -10,7 +10,7 @@
 CompanyLogoScene = class()
 
 -- local variables to this scene
-
+local startTime
 
 -- Use this function to perform your initial setup for this scene
 function CompanyLogoScene:init()
@@ -22,6 +22,7 @@ function CompanyLogoScene:init()
     pushStyle()  
     
     -- scene setup code here
+    startTime = ElapsedTime
     
 end
 
@@ -29,8 +30,12 @@ function CompanyLogoScene:draw()
     -- Codea does not automatically call this method
     
     background(255, 0, 0, 255)
+    sprite("Project:CompanyBackground", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     -- Do your drawing here
+    if(startTime + 2 < ElapsedTime) then
+        Scene.Change("gameLogoScene")
+    end
     
 end
 

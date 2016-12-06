@@ -13,6 +13,7 @@
 DEBUG_GAMECENTER = true
 
 -- Global variables to the entire project
+currentLevel = 1
 
 -- local variables to this scene
 
