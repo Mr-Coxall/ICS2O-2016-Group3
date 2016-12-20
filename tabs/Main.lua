@@ -37,7 +37,7 @@ function setup()
       Scene("settingsScene", SettingsScene)
       Scene("achievementsScene", AchievementsScene)
       Scene("creditsScene", CreditsScene)
-      Scene("mainGame", MainGame)
+      Scene("mainGameScene", MainGameScene)
       		      
       Scene.Change("companyLogoScene")
 end
