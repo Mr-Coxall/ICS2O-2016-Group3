@@ -14,6 +14,8 @@ DEBUG_GAMECENTER = true
 
 -- Global variables to the entire project
 currentLevel = 1
+gender = sprite("Project:girl")
+--levelSelected = 
 
 -- local variables to this scene
 
@@ -31,6 +33,11 @@ function setup()
      -- create the scenes
       Scene("companyLogoScene", CompanyLogoScene)
       Scene("gameLogoScene", GameLogoScene)
+      Scene("mainMenuScene", MainMenuScene)
+      Scene("settingsScene", SettingsScene)
+      Scene("achievementsScene", AchievementsScene)
+      Scene("creditsScene", CreditsScene)
+      Scene("mainGame", MainGame)
       		      
       Scene.Change("companyLogoScene")
 end
@@ -48,4 +55,4 @@ end
 function touched(touch)
     -- Do your touching code here
     Scene.Touched(touch) 
-end
+end 

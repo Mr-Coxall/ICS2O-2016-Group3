@@ -10,6 +10,7 @@
 GameLogoScene = class()
 
 -- local variables to this scene
+local startTime
 
 -- Use this function to perform your initial setup for this scene
 function GameLogoScene:init(x)
@@ -21,15 +22,18 @@ function GameLogoScene:init(x)
     pushStyle()
     
     -- scene setup code here
+    startTime = ElapsedTime
 end
 
 function GameLogoScene:draw()
-    -- Codea does not automatically call this method
-    
+    -- Codea does not automatically call this method 
     background(31, 22, 201, 255)
-    
-    -- do your drawing here
     sprite("Project:GameBackground", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    
+    -- do your drawing here  
+        if (startTime + 2 < ElapsedTime) then 
+        Scene.Change("mainMenuScene")
+    end  
 end
 
 function GameLogoScene:touched(touch)
