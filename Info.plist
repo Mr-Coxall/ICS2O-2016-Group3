@@ -13,6 +13,7 @@
 		<string>SettingsScene</string>
 		<string>AchievementsScene</string>
 		<string>CreditsScene</string>
+		<string>LevelsScene</string>
 		<string>MainGame</string>
 		<string>HelperClass</string>
 	</array>
