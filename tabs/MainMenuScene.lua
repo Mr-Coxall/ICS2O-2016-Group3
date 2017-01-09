@@ -9,10 +9,11 @@
 
 MainMenuScene = class()
 
-
-
 -- local variables to this scene
 local startButton
+local settingsButton
+local achievementsButton
+local creditsButton
 
 -- Use this function to perform your initial setup for this scene
 function MainMenuScene:init(x)
@@ -26,6 +27,9 @@ function MainMenuScene:init(x)
     -- scene setup code here
     
     startButton = Button ("Project:startButton", vec2(WIDTH/2,HEIGHT/2))
+    settingsButton = Button ("Documents:settingsButton", vec2(WIDTH/2, HEIGHT/3))
+    achievementsButton = Button ("Documents:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
+    creditsButton = Button ("Documents:creditsButton", vec2(WIDTH/1.1, HEIGHT/11))
 end
 
 function MainMenuScene:draw()
@@ -35,10 +39,24 @@ function MainMenuScene:draw()
     
     -- do your drawing here
     sprite("Documents:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
-    --sprite("Project:startButton", vec2(20,20))
+    
     startButton:draw()
+    settingsButton:draw()
+    achievementsButton:draw()
+    creditsButton:draw()
 end
 
 function MainMenuScene:touched(touch)
+    startButton:touched(touch)
+    settingsButton:touched(touch)
+    achievementsButton:touched(touch)
+    creditsButton:touched(touch)
+    
+    if (startButton.selected == true) then
+        Scene.Change ("levelScene")
+    end
+
+    end
+    
+    
     -- Codea does not automatically call this method
-end

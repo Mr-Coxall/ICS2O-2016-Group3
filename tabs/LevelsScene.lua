@@ -9,13 +9,21 @@
 
 LevelsScene = class()
 
+-- Use this function to perform your initial setup for this scene
 function LevelsScene:init(x)
-    -- you can accept and set parameters here
-    self.x = x
-end
+    -- setup display options
+    supportedOrientations(LANDSCAPE_ANY)
+    noFill()
+    noSmooth()
+    noStroke()
+    pushStyle()
+end 
+
+
 
 function LevelsScene:draw()
     -- Codea does not automatically call this method
+    background(31, 22, 201, 255)
 end
 
 function LevelsScene:touched(touch)
