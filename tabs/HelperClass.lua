@@ -1,7 +1,7 @@
 -- HelperClass
 
 -- Created by: Mr Coxall
--- Created on: Nov 2014
+-- Created on: Nov 11 2014
 -- Created for: ICS2O
 -- This is a collection of classes and a scene management system, 
 -- to help in the aid of coding.
