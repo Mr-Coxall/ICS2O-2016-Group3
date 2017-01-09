@@ -11,10 +11,11 @@
 		<string>GameLogoScene</string>
 		<string>MainMenuScene</string>
 		<string>SettingsScene</string>
+		<string>HelperClass</string>
 		<string>AchievementsScene</string>
 		<string>CreditsScene</string>
-		<string>MainGame</string>
-		<string>HelperClass</string>
+		<string>LevelsScene</string>
+		<string>MainGameScene</string>
 	</array>
 	<key>Description</key>
 	<string>No description available</string>

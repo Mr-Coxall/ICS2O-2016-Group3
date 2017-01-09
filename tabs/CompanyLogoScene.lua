@@ -15,7 +15,7 @@ local startTime
 -- Use this function to perform your initial setup for this scene
 function CompanyLogoScene:init()
     -- set up display options
-    supportedOrientations(LANDSCAPE_ANY)
+    --supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
@@ -34,10 +34,9 @@ function CompanyLogoScene:draw()
     
     -- Do your drawing here
     if(startTime + 2 < ElapsedTime) then
-        Scene.Change("gameLogoScene")
+        Scene.Change("gameLogoScene") 
+        end
     end
-    
-end
 
 function CompanyLogoScene:touched(touch)
     -- Codea does not automatically call this method
