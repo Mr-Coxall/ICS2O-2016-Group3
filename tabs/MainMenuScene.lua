@@ -38,7 +38,7 @@ function MainMenuScene:draw()
     background(31, 22, 201, 255)
     
     -- do your drawing here
-    sprite("Documents:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Project:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     startButton:draw()
     settingsButton:draw()
@@ -55,8 +55,11 @@ function MainMenuScene:touched(touch)
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
     end
-
+     
+    if (settingsButton.selected == true) then
+        Scene.Change ("settingsScene")
     end
+end
     
     
     -- Codea does not automatically call this method

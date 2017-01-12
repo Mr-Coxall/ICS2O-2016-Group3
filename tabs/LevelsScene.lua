@@ -9,6 +9,8 @@
 
 LevelsScene = class()
 
+-- local variables in this scene
+
 -- Use this function to perform your initial setup for this scene
 function LevelsScene:init(x)
     -- setup display options
@@ -17,15 +19,30 @@ function LevelsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle()
+    
+    levelsBackButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
 end 
 
-
+    -- scene setup code here
+sprite("Dropbox:Red Back Circle Button")
 
 function LevelsScene:draw()
     -- Codea does not automatically call this method
-    background(31, 22, 201, 255)
+    background(255, 255, 255, 255)
+    
+    -- do your drawing here
+    sprite("Documents:LevelsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    
+    levelsBackButton:draw()
+    
 end
 
 function LevelsScene:touched(touch)
     -- Codea does not automatically call this method
+    levelsBackButton:touched(touch)
+        
+     if (levelsBackButton.selected == true) then
+        Scene.Change ("mainMenuScene")
+        end
+    
 end
