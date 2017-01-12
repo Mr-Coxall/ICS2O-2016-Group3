@@ -8,7 +8,14 @@
 	<array>
 		<string>Main</string>
 		<string>CompanyLogoScene</string>
-                <string>GameLogoScene</string>
+		<string>GameLogoScene</string>
+		<string>MainMenuScene</string>
+		<string>LevelsScene</string>
+		<string>SettingsScene</string>
+		<string>TransitionScreen</string>
+		<string>AchievementsScene</string>
+		<string>CreditsScene</string>
+		<string>MainGame</string>
 		<string>HelperClass</string>
 	</array>
 	<key>Description</key>
