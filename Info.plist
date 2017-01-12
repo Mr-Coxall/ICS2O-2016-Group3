@@ -11,11 +11,17 @@
 		<string>GameLogoScene</string>
 		<string>MainMenuScene</string>
 		<string>SettingsScene</string>
-		<string>HelperClass</string>
 		<string>AchievementsScene</string>
 		<string>CreditsScene</string>
 		<string>LevelsScene</string>
 		<string>MainGameScene</string>
+		<string>BuyingScene</string>
+		<string>PayingScene</string>
+		<string>CompleteBuyingProcessScene</string>
+		<string>BuyingMoreItemsScene</string>
+		<string>LastClueScene</string>
+		<string>ShowDialog</string>
+		<string>HelperClass</string>
 	</array>
 	<key>Description</key>
 	<string>No description available</string>

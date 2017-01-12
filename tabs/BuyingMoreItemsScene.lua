@@ -5,7 +5,7 @@
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
 
-MainGameScene = class()
+BuyingMoreItemsScene = class()
 local itemsToSell = {}
 
 levelSelected = 1
@@ -15,16 +15,18 @@ local firstThingTheyAreBuying
 local secondThingTheyAreBuying
 local thirdThingTheyAreBuying
 local fourthThingTheyAreBuying
+local startTime
 
--- Use this function to perform your initial setup
-function MainGameScene:init(x)
+function BuyingMoreItemsScene:init(x)
     -- you can accept and set parameters here
     displayMode(FULLSCREEN)
     noFill()
     noSmooth()
     noStroke()
     pushStyle() 
-     sprite("Project:trophy") 
+     sprite("Cargo Bot:Condition Green") 
+    
+    startTime = ElapsedTime
     
     cashier = SpriteObject("Project:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
     desk = SpriteObject("Project:desk", vec2(WIDTH-740, HEIGHT-560))
@@ -32,8 +34,11 @@ function MainGameScene:init(x)
     homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
     settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
     nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
+    backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-195, HEIGHT-680))
+    yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
+    noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     
-     pencil = {}
+         pencil = {}
     pencil["item"] = "Project:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
@@ -119,7 +124,7 @@ function MainGameScene:init(x)
     trophy["name"] = "trophy"
    
     table.insert(itemsToSell, trophy)
-    print(itemsToSell[11]["item"])    
+    print(itemsToSell[11]["item"])  
     
     firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
     firstThingTheyAreBuying.draggable = true
@@ -133,18 +138,16 @@ function MainGameScene:init(x)
     firstThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+1]["cost"])
     secondThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+2]["cost"])
     thirdThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+3]["cost"])
-    fourthThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+4]["cost"])
+    fourthThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+4]["cost"]) 
+ 
+    sceneDialog = ShowDialog("Would you like to buy any more items?",vec2(WIDTH/2, HEIGHT/2),400,200)
+    sceneDialog:setFont("Courier", 25)
+    sceneDialog:show()
     
-    cashierDialog = ShowDialog("Hello! Welcome to Shop Mart! Drag the items you want to buy to the basket. Please press the next button to start buying an item.",vec2(WIDTH/2-5, HEIGHT-310), 350,190)
-    cashierDialog:setFont("Courier", 25)
-    cashierDialog:show()
-    
-   
     end
 
-function MainGameScene:draw()
+function BuyingMoreItemsScene:draw()
     -- Codea does not automatically call this method
-    -- Do your drawing here
     background(40, 40, 50)
     sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
@@ -156,24 +159,22 @@ function MainGameScene:draw()
     text ("Level " .. levelSelected , WIDTH-130, HEIGHT-50)
     fontSize(30)
     text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT-730)
-    text("NEXT", WIDTH-73, HEIGHT-752)
     -- This sets a dark background color 
-   -- sprite("Project:basket")
+    
     -- this displays desk,girl/boy and buttons
-
+    
     sprite("Project:shelf", WIDTH/2+200, HEIGHT-198)
     sprite("Cargo Bot:Condition Green", WIDTH/2+50, HEIGHT-290)
     sprite("Cargo Bot:Condition Green", WIDTH/2+150, HEIGHT-290)
     sprite("Cargo Bot:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290) 
+   -- sprite())
     
     fontSize(15)
     text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+50, HEIGHT-290)
     text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+150, HEIGHT-290)
     text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+250, HEIGHT-290)
     text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+350, HEIGHT-290)  
-    
-    popStyle()
     
      cashier:draw()
      desk:draw()
@@ -183,20 +184,27 @@ function MainGameScene:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
      settingsButton:draw()
-     homeButton:draw()
-     nextButton:draw()
-     cashierDialog:draw()
-    end
+     homeButton:draw()  
+     sceneDialog:draw()
+     yesBox:draw()
+     noBox:draw()
+    
+    fontSize(20)
+    text ("NO", WIDTH/2-50, HEIGHT/2-45)
+    text ("YES", WIDTH/2+50, HEIGHT/2-45)
+    popStyle()
+    
+    end 
 
-function MainGameScene:touched(touch)
-    -- Codea does not automatically call this method  
-    settingsButton:touched(touch)
-    homeButton:touched(touch)
-    nextButton:touched(touch)
-    cashierDialog:touched(touch)  
-     
-    if (nextButton.selected == true) then
-        cashierDialog:hide()
-        Scene.Change("buyingScene")
-        end
- end
+function BuyingMoreItemsScene:touched(touch)
+    -- Codea does not automatically call this method 
+     sceneDialog:touched(touch)
+    yesBox:touched(touch)
+    noBox:touched(touch)
+    
+    if (yesBox.selected == true) then
+        Scene.Change ("buyingScene")
+        elseif (noBox.selected == true) then
+        Scene.Change ("mainGameScene")
+    end
+    end

@@ -31,14 +31,20 @@ function setup()
     pushStyle()    
     
      -- create the scenes
+      Scene("completeBuyingProcessScene", CompleteBuyingProcessScene)
+      Scene("buyingMoreItemsScene", BuyingMoreItemsScene)
+      Scene("achievementsScene", AchievementsScene)
       Scene("companyLogoScene", CompanyLogoScene)
       Scene("gameLogoScene", GameLogoScene)
       Scene("mainMenuScene", MainMenuScene)
       Scene("settingsScene", SettingsScene)
-      Scene("achievementsScene", AchievementsScene)
+      Scene("mainGameScene", MainGameScene)
+      Scene("lastClueScene", LastClueScene)
       Scene("creditsScene", CreditsScene)
-      Scene("mainGame", MainGame)
+      Scene("buyingScene", BuyingScene)
+      Scene("payingScene", PayingScene)
       Scene ("levelScene", LevelsScene)
+      
     		      
       Scene.Change("companyLogoScene")
 end
