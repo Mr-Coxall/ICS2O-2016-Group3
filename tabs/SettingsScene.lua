@@ -10,17 +10,24 @@
 SettingsScene = class()
 
 -- global variables to this scene
---gender = function choosingGender()
-    --if 
---end
 
+-- Use this function to perform your initial setup for this scene
 function SettingsScene:init(x)
-    -- you can accept and set parameters here
-    self.x = x
+    -- setup display options
+    supportedOrientations(LANDSCAPE_ANY)
+    noFill()
+    noSmooth()
+    noStroke()
+    pushStyle()
+    
 end
 
 function SettingsScene:draw()
     -- Codea does not automatically call this method
+    background(255, 255, 255, 255)
+    
+    -- do your drawing here
+    sprite("Project:SettingsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
 end
 
 function SettingsScene:touched(touch)
