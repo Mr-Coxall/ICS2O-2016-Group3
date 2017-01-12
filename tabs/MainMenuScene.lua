@@ -54,9 +54,9 @@ function MainMenuScene:touched(touch)
     
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
-    end
-     
-    if (settingsButton.selected == true) then
+    elseif (creditsButton.selected == true) then
+        Scene.Change ("creditsScene")
+    elseif (settingsButton.selected == true) then
         Scene.Change ("settingsScene")
     end
 end
