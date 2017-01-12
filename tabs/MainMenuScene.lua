@@ -54,9 +54,10 @@ function MainMenuScene:touched(touch)
     
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
+    elseif (creditsButton.selected == true) then
+        Scene.Change ("creditsScene")
     end
-
-    end
+end
     
     
     -- Codea does not automatically call this method
