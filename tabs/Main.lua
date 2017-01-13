@@ -14,7 +14,7 @@ DEBUG_GAMECENTER = true
 
 -- Global variables to the entire project
 currentLevel = 1
-gender = sprite("Project:girl")
+gender = sprite("Dropbox:girl")
 --levelSelected = 
 
 -- local variables to this scene
