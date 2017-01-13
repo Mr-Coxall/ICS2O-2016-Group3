@@ -38,7 +38,7 @@ function MainMenuScene:draw()
     background(31, 22, 201, 255)
     
     -- do your drawing here
-    sprite("Documents:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Dropbox:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     startButton:draw()
     settingsButton:draw()
@@ -56,6 +56,8 @@ function MainMenuScene:touched(touch)
         Scene.Change ("levelScene")
     elseif (creditsButton.selected == true) then
         Scene.Change ("creditsScene")
+    elseif (settingsButton.selected == true) then
+        Scene.Change ("settingsScene")
     end
 end
     
