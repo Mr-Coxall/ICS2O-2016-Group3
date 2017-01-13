@@ -38,7 +38,7 @@ function MainMenuScene:draw()
     background(31, 22, 201, 255)
     
     -- do your drawing here
-    sprite("Project:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Dropbox:MainMenuScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     startButton:draw()
     settingsButton:draw()

@@ -27,7 +27,7 @@ function SettingsScene:draw()
     background(255, 255, 255, 255)
     
     -- do your drawing here
-    sprite("Project:SettingsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Dropbox:SettingsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
 end
 
 function SettingsScene:touched(touch)

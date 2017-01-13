@@ -28,7 +28,7 @@ end
 function GameLogoScene:draw()
     -- Codea does not automatically call this method 
     background(31, 22, 201, 255)
-    sprite("Project:GameBackground", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Dropbox:GameBackground", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     -- do your drawing here  
         if (startTime + 2 < ElapsedTime) then 

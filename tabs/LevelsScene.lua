@@ -31,7 +31,7 @@ function LevelsScene:draw()
     background(255, 255, 255, 255)
     
     -- do your drawing here
-    sprite("Documents:LevelsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    sprite("Dropbox:LevelsScene", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     
     levelsBackButton:draw()
     
