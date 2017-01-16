@@ -11,6 +11,8 @@
 		<string>GameLogoScene</string>
 		<string>MainMenuScene</string>
 		<string>LevelsScene</string>
+		<string>BuyingScene</string>
+		<string>BuyingMoreItemsScene</string>
 		<string>SettingsScene</string>
 		<string>TransitionScreen</string>
 		<string>AchievementsScene</string>
