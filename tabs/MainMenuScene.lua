@@ -16,7 +16,7 @@ local achievementsButton
 local creditsButton
 
 -- Use this function to perform your initial setup for this scene
-function MainMenuScene:init(x)
+function MainMenuScene:init()
     -- setup display options
     supportedOrientations(LANDSCAPE_ANY)
     noFill()
@@ -24,12 +24,17 @@ function MainMenuScene:init(x)
     noStroke()
     pushStyle()
     
-    -- scene setup code here
+    if (musicPlaying == false) then
+        music("Game Music One:Toy Land", true, 0.30)
+        musicPlaying = true
+    end
     
-    startButton = Button ("Project:startButton", vec2(WIDTH/2,HEIGHT/2))
-    settingsButton = Button ("Documents:settingsButton", vec2(WIDTH/2, HEIGHT/3))
-    achievementsButton = Button ("Documents:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
-    creditsButton = Button ("Documents:creditsButton", vec2(WIDTH/1.1, HEIGHT/11))
+    -- scene setup code here
+    sprite()
+    startButton = Button ("Dropbox:startButton", vec2(WIDTH/2,HEIGHT/2))
+    settingsButton = Button ("Dropbox:settingsButton", vec2(WIDTH/2, HEIGHT/2-110))
+    achievementsButton = Button ("Dropbox:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
+    creditsButton = Button ("Dropbox:creditsButton", vec2(WIDTH/1.1, HEIGHT/11))
 end
 
 function MainMenuScene:draw()
@@ -54,10 +59,13 @@ function MainMenuScene:touched(touch)
     
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
+        sound(SOUND_HIT, 4344)
     elseif (creditsButton.selected == true) then
         Scene.Change ("creditsScene")
+        sound(SOUND_HIT, 4344)
     elseif (settingsButton.selected == true) then
         Scene.Change ("settingsScene")
+        sound(SOUND_HIT, 4344)
     end
 end
     
