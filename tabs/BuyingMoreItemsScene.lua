@@ -24,22 +24,22 @@ function BuyingMoreItemsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-     sprite("Cargo Bot:Condition Green") 
+     sprite("Dropbox:Condition Green") 
     
     startTime = ElapsedTime
     
-    cashier = SpriteObject("Project:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
-    desk = SpriteObject("Project:desk", vec2(WIDTH-740, HEIGHT-560))
-    basket = SpriteObject("Project:basket", vec2(WIDTH-740, HEIGHT-660))
+    cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
+    desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
+    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-6))
     homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
     settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
     nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
     backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-195, HEIGHT-680))
-    yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
-    noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
+    yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
+    noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     
-         pencil = {}
-    pencil["item"] = "Project:pencil"
+    pencil = {}
+    pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
     
@@ -47,7 +47,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[1]["item"])
      
     car = {}
-    car["item"] = "Project:car"
+    car["item"] = "Dropbox:car"
     car["cost"] = 0.15
     car["name"] = "car"
      
@@ -55,7 +55,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Planet Cute:Chest Closed"
+    present["item"] = "Dropbox:Chest Closed"
     present["cost"] = 0.30
     present["name"] = "present"
 
@@ -63,7 +63,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[3]["item"])
     
      baseball = {}
-    baseball["item"] = "Project:basketball"
+    baseball["item"] = "Dropbox:basketball"
     baseball["cost"] = 1.25
     baseball["name"] = "basketball"
       
@@ -71,7 +71,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[4]["item"])
     
     football = {}
-    football["item"] = "Project:football"
+    football["item"] = "Dropbox:football"
     football["cost"] = 2.10
     football["name"] = "football"
    
@@ -79,7 +79,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Planet Cute:Character Boy"
+    kitten["item"] = "Dropbox:Character Boy"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
@@ -87,7 +87,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[6]["item"]) 
     
     glasses = {}
-    glasses["item"] = "Project:glasses"
+    glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
     glasses["name"] = "glasses"
  
@@ -95,7 +95,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Planet Cute:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:Character Princess Girl"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
@@ -103,7 +103,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[8]["item"])
     
     book = {}
-    book["item"] = "Planet Cute:Chest Lid"
+    book["item"] = "Dropbox:Chest Lid"
     book["cost"] = 5.25
     book["name"] = "book"
   
@@ -111,7 +111,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[9]["item"])
     
     angel = {}
-    angel["item"] = "Project:angel"
+    angel["item"] = "Dropbox:angel"
     angel["cost"] = 2.40
     angel["name"] = "angel"
   
@@ -119,7 +119,7 @@ function BuyingMoreItemsScene:init(x)
     print(itemsToSell[10]["item"])
       
     trophy = {}
-    trophy["item"] = "Project:trophy"
+    trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10
     trophy["name"] = "trophy"
    
@@ -163,11 +163,11 @@ function BuyingMoreItemsScene:draw()
     
     -- this displays desk,girl/boy and buttons
     
-    sprite("Project:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290) 
+    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
+    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290) 
    -- sprite())
     
     fontSize(15)
@@ -207,4 +207,4 @@ function BuyingMoreItemsScene:touched(touch)
         elseif (noBox.selected == true) then
         Scene.Change ("mainGameScene")
     end
-    end
+end

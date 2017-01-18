@@ -56,7 +56,8 @@ function ShowDialog:show()
     local textWidth, textHeight
     self.image = image(self.width, self.height)
     setContext(self.image)
-    sprite("Planet Cute:SpeechBubble",self.width/2,self.height/1.25,self.width,self.height*1.6)
+    sprite("Dropbox:SpeechBubble",self.width/2,self.height/1.25,self.width,self.height*1.6)
+
     font(self.font)
     fontSize(self.fontSize)
     textWrapWidth(self.width * .8)

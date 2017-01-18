@@ -32,8 +32,8 @@ function CompleteBuyingProcessScene:init(x)
     
     backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
-         pencil = {}
-    pencil["item"] = "Project:pencil"
+    pencil = {}
+    pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
     
@@ -41,7 +41,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[1]["item"])
      
     car = {}
-    car["item"] = "Project:car"
+    car["item"] = "Dropbox:car"
     car["cost"] = 0.15
     car["name"] = "car"
      
@@ -49,7 +49,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Planet Cute:Chest Closed"
+    present["item"] = "Dropbox:Chest Closed"
     present["cost"] = 0.30
     present["name"] = "present"
 
@@ -57,7 +57,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[3]["item"])
     
      baseball = {}
-    baseball["item"] = "Project:basketball"
+    baseball["item"] = "Dropbox:basketball"
     baseball["cost"] = 1.25
     baseball["name"] = "basketball"
       
@@ -65,7 +65,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[4]["item"])
     
     football = {}
-    football["item"] = "Project:football"
+    football["item"] = "Dropbox:football"
     football["cost"] = 2.10
     football["name"] = "football"
    
@@ -73,7 +73,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Planet Cute:Character Boy"
+    kitten["item"] = "Dropbox:Character Boy"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
@@ -81,7 +81,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[6]["item"]) 
     
     glasses = {}
-    glasses["item"] = "Project:glasses"
+    glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
     glasses["name"] = "glasses"
  
@@ -89,7 +89,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Planet Cute:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:Character Princess Girl"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
@@ -97,7 +97,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[8]["item"])
     
     book = {}
-    book["item"] = "Planet Cute:Chest Lid"
+    book["item"] = "Dropbox:Chest Lid"
     book["cost"] = 5.25
     book["name"] = "book"
   
@@ -105,7 +105,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[9]["item"])
     
     angel = {}
-    angel["item"] = "Project:angel"
+    angel["item"] = "Dropbox:angel"
     angel["cost"] = 2.40
     angel["name"] = "angel"
   
@@ -113,7 +113,7 @@ function CompleteBuyingProcessScene:init(x)
     print(itemsToSell[10]["item"])
       
     trophy = {}
-    trophy["item"] = "Project:trophy"
+    trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10
     trophy["name"] = "trophy"
    
@@ -143,7 +143,7 @@ function CompleteBuyingProcessScene:draw()
     -- Codea does not automatically call this method
    
     background(40, 40, 50)
-    sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
+    sprite("Dropbox:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
     fill(0, 0, 0, 255)
     fontSize(50)
@@ -158,12 +158,11 @@ function CompleteBuyingProcessScene:draw()
     -- this displays desk,girl/boy and buttons
     
    
-    
-    sprite("Project:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290) 
+    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
+    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290) 
    -- sprite())
     
     fontSize(15)

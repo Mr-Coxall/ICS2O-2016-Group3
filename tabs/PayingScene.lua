@@ -37,7 +37,8 @@ function PayingScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-     sprite("Project:twoDollar") 
+
+     sprite("Dropbox:twoDollar") 
     startTime = ElapsedTime
     
     backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-195, HEIGHT-680))
@@ -52,7 +53,7 @@ function PayingScene:init(x)
     print(itemsToSell[1]["item"])
      
     car = {}
-    car["item"] = "Project:car"
+    car["item"] = "Dropbox:car"
     car["cost"] = 0.15
     car["name"] = "car"
      
@@ -60,7 +61,7 @@ function PayingScene:init(x)
     print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Planet Cute:Chest Closed"
+    present["item"] = "Dropbox:Chest Closed"
     present["cost"] = 0.30
     present["name"] = "present"
 
@@ -68,7 +69,7 @@ function PayingScene:init(x)
     print(itemsToSell[3]["item"])
     
      baseball = {}
-    baseball["item"] = "Project:basketball"
+    baseball["item"] = "Dropbox:basketball"
     baseball["cost"] = 1.25
     baseball["name"] = "basketball"
       
@@ -76,7 +77,7 @@ function PayingScene:init(x)
     print(itemsToSell[4]["item"])
     
     football = {}
-    football["item"] = "Project:football"
+    football["item"] = "Dropbox:football"
     football["cost"] = 2.10
     football["name"] = "football"
    
@@ -84,7 +85,7 @@ function PayingScene:init(x)
     print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Planet Cute:Character Boy"
+    kitten["item"] = "Dropbox:Character Boy"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
@@ -92,7 +93,7 @@ function PayingScene:init(x)
     print(itemsToSell[6]["item"]) 
     
     glasses = {}
-    glasses["item"] = "Project:glasses"
+    glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
     glasses["name"] = "glasses"
  
@@ -100,7 +101,7 @@ function PayingScene:init(x)
     print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Planet Cute:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:Character Princess Girl"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
@@ -108,7 +109,7 @@ function PayingScene:init(x)
     print(itemsToSell[8]["item"])
     
     book = {}
-    book["item"] = "Planet Cute:Chest Lid"
+    book["item"] = "Dropbox:Chest Lid"
     book["cost"] = 5.25
     book["name"] = "book"
   
@@ -116,7 +117,7 @@ function PayingScene:init(x)
     print(itemsToSell[9]["item"])
     
     angel = {}
-    angel["item"] = "Project:angel"
+    angel["item"] = "Dropbox:angel"
     angel["cost"] = 2.40
     angel["name"] = "angel"
   
@@ -124,7 +125,7 @@ function PayingScene:init(x)
     print(itemsToSell[10]["item"])
       
     trophy = {}
-    trophy["item"] = "Project:trophy"
+    trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10
     trophy["name"] = "trophy"
    
@@ -133,48 +134,48 @@ function PayingScene:init(x)
     
     
     fiveCent = {}
-    fiveCent["item"] = "Planet Cute:Door Tall Open"
+    fiveCent["item"] = "Dropbox:Door Tall Open"
     fiveCent["cost"] = 0.05
     
     table.insert(shopperMoney, fiveCent)
     print(shopperMoney[1]["item"])
     
     tenCent = {}
-    tenCent["item"] = "Project:tenCent"
+    tenCent["item"] = "Dropbox:tenCent"
     tenCent["cost"] = 0.10
     
     table.insert(shopperMoney, tenCent)
     print(shopperMoney[2]["item"])
     
     twentyFiveCent = {}
-    twentyFiveCent["item"] = "Project:twentyFiveCent"
+    twentyFiveCent["item"] = "Dropbox:twentyFiveCent"
     twentyFiveCent["cost"] = 0.25
      
     table.insert(shopperMoney, twentyFiveCent)
     print(shopperMoney[3]["item"])
     
     oneDollar = {}
-    oneDollar["item"] = "Project:oneDollar"
+    oneDollar["item"] = "Dropbox:oneDollar"
     oneDollar["cost"] = 1.00
      
     table.insert(shopperMoney, oneDollar)
     print(shopperMoney[4]["item"])
     
       twoDollar = {}
-    twoDollar["item"] = "Project:twoDollar"
+    twoDollar["item"] = "Dropbox:twoDollar"
     twoDollar["cost"] = 2.00
       
     table.insert(shopperMoney, twoDollar)
     print(shopperMoney[5]["item"])
     
     FiveDollarBill = {}
-    FiveDollarBill["item"] = "Project:fiveDollar"
+    FiveDollarBill["item"] = "Dropbox:fiveDollar"
     FiveDollarBill["cost"] = 5.00
     
     table.insert(shopperMoney, FiveDollarBill)
     print(shopperMoney[6]["item"])
     
-       firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
+    firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
     firstThingTheyAreBuying.draggable = true
     secondThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+2]["item"], vec2(WIDTH/2+150, HEIGHT-150))
     secondThingTheyAreBuying.draggable = true
@@ -228,7 +229,7 @@ end
 function PayingScene:draw()
     -- Codea does not automatically call this method
       background(40, 40, 50)
-    sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
+    sprite("Dropbox:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
     fill(0, 0, 0, 255)
     fontSize(50)
@@ -242,11 +243,11 @@ function PayingScene:draw()
    -- sprite("Project:basket")
     -- this displays desk,girl/boy and buttons
 
-    sprite("Project:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290)
+    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
+    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290)
     
     fontSize(15)
     text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+50, HEIGHT-290)
@@ -266,7 +267,7 @@ function PayingScene:draw()
      settingsButton:draw()
      homeButton:draw()
      nextButton:draw()
-    sprite("Project:hand", WIDTH-310, HEIGHT-500)
+    sprite("Dropbox:hand", WIDTH-310, HEIGHT-500)
     cashierDialog:draw()
     
     fontSize(30)

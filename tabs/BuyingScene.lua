@@ -31,13 +31,12 @@ function BuyingScene:init(x)
      sprite("Dropbox:Red Back Circle Button") 
     
     startTime = ElapsedTime
-    
-    yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
-    noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
+
+    yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
+    noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     nextButton1 = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
          pencil = {}
-    pencil["item"] = "Project:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
     
@@ -45,7 +44,7 @@ function BuyingScene:init(x)
     print(itemsToSell[1]["item"])
      
     car = {}
-    car["item"] = "Project:car"
+    car["item"] = "Dropbox:car"
     car["cost"] = 0.15
     car["name"] = "car"
      
@@ -53,7 +52,7 @@ function BuyingScene:init(x)
     print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Planet Cute:Chest Closed"
+    present["item"] = "Dropbox:Chest Closed"
     present["cost"] = 0.30
     present["name"] = "present"
 
@@ -61,7 +60,7 @@ function BuyingScene:init(x)
     print(itemsToSell[3]["item"])
     
      baseball = {}
-    baseball["item"] = "Project:basketball"
+    baseball["item"] = "Dropbox:basketball"
     baseball["cost"] = 1.25
     baseball["name"] = "basketball"
       
@@ -69,7 +68,7 @@ function BuyingScene:init(x)
     print(itemsToSell[4]["item"])
     
     football = {}
-    football["item"] = "Project:football"
+    football["item"] = "Dropbox:football"
     football["cost"] = 2.10
     football["name"] = "football"
    
@@ -77,7 +76,7 @@ function BuyingScene:init(x)
     print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Planet Cute:Character Boy"
+    kitten["item"] = "Dropbox:Character Boy"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
@@ -85,7 +84,7 @@ function BuyingScene:init(x)
     print(itemsToSell[6]["item"]) 
     
     glasses = {}
-    glasses["item"] = "Project:glasses"
+    glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
     glasses["name"] = "glasses"
  
@@ -93,7 +92,7 @@ function BuyingScene:init(x)
     print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Planet Cute:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:Character Princess Girl"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
@@ -101,7 +100,7 @@ function BuyingScene:init(x)
     print(itemsToSell[8]["item"])
     
     book = {}
-    book["item"] = "Planet Cute:Chest Lid"
+    book["item"] = "Dropbox:Chest Lid"
     book["cost"] = 5.25
     book["name"] = "book"
   
@@ -109,7 +108,7 @@ function BuyingScene:init(x)
     print(itemsToSell[9]["item"])
     
     angel = {}
-    angel["item"] = "Project:angel"
+    angel["item"] = "Dropbox:angel"
     angel["cost"] = 2.40
     angel["name"] = "angel"
   
@@ -117,7 +116,7 @@ function BuyingScene:init(x)
     print(itemsToSell[10]["item"])
       
     trophy = {}
-    trophy["item"] = "Project:trophy"
+    trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10
     trophy["name"] = "trophy"
    
@@ -204,7 +203,7 @@ function BuyingScene:draw()
     text ("YES", WIDTH/2+50, HEIGHT/2-45)   
         popStyle()    
     end
-    end 
+end 
 
 function BuyingScene:touched(touch)
     -- Codea does not automatically call this method 
@@ -292,4 +291,4 @@ function BuyingScene:touched(touch)
     if(backButton.selected == true) then
         Scene.Change("mainGameScene")
     end
-    end
+end

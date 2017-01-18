@@ -24,17 +24,18 @@ function MainGameScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-     sprite("Project:trophy") 
+
+    sprite("Dropbox:trophy") 
     
-    cashier = SpriteObject("Project:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
-    desk = SpriteObject("Project:desk", vec2(WIDTH-740, HEIGHT-560))
-    basket = SpriteObject("Project:basket", vec2(WIDTH-740, HEIGHT-660))
-    homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
-    settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
+    cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
+    desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
+    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-660))
+    homeButton = Button("Dropbox:Red Level Menu Button", vec2(100, HEIGHT-80))
+    settingsButton = Button("Dropbox:Red Settings Button", vec2(250, HEIGHT-80))
     nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
-     pencil = {}
-    pencil["item"] = "Project:pencil"
+    pencil = {}
+    pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
     
@@ -42,7 +43,7 @@ function MainGameScene:init(x)
     print(itemsToSell[1]["item"])
      
     car = {}
-    car["item"] = "Project:car"
+    car["item"] = "Dropbox:car"
     car["cost"] = 0.15
     car["name"] = "car"
      
@@ -50,7 +51,7 @@ function MainGameScene:init(x)
     print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Planet Cute:Chest Closed"
+    present["item"] = "Dropbox:Chest Closed"
     present["cost"] = 0.30
     present["name"] = "present"
 
@@ -58,7 +59,7 @@ function MainGameScene:init(x)
     print(itemsToSell[3]["item"])
     
      baseball = {}
-    baseball["item"] = "Project:basketball"
+    baseball["item"] = "Dropbox:basketball"
     baseball["cost"] = 1.25
     baseball["name"] = "basketball"
       
@@ -66,7 +67,7 @@ function MainGameScene:init(x)
     print(itemsToSell[4]["item"])
     
     football = {}
-    football["item"] = "Project:football"
+    football["item"] = "Dropbox:football"
     football["cost"] = 2.10
     football["name"] = "football"
    
@@ -74,7 +75,7 @@ function MainGameScene:init(x)
     print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Planet Cute:Character Boy"
+    kitten["item"] = "Dropbox:Character Boy"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
@@ -82,7 +83,7 @@ function MainGameScene:init(x)
     print(itemsToSell[6]["item"]) 
     
     glasses = {}
-    glasses["item"] = "Project:glasses"
+    glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
     glasses["name"] = "glasses"
  
@@ -90,7 +91,7 @@ function MainGameScene:init(x)
     print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Planet Cute:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:Character Princess Girl"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
@@ -114,7 +115,7 @@ function MainGameScene:init(x)
     print(itemsToSell[10]["item"])
       
     trophy = {}
-    trophy["item"] = "Project:trophy"
+    trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10
     trophy["name"] = "trophy"
    
@@ -161,11 +162,11 @@ function MainGameScene:draw()
    -- sprite("Project:basket")
     -- this displays desk,girl/boy and buttons
 
-    sprite("Project:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+350, HEIGHT-290)
+    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
+    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290)
     
     fontSize(15)
     text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+50, HEIGHT-290)
