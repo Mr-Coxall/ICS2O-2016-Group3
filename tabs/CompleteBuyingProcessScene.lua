@@ -5,9 +5,12 @@
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
 
-BuyingMoreItemsScene = class()
+CompleteBuyingProcessScene = class()
 local itemsToSell = {}
+currentItemSelected = ""
+currentItemSelectedName = ""
 
+wrongCounter = 0
 levelSelected = 1
 pointsInLevel = 0
 
@@ -17,26 +20,17 @@ local thirdThingTheyAreBuying
 local fourthThingTheyAreBuying
 local startTime
 
-function BuyingMoreItemsScene:init(x)
+function CompleteBuyingProcessScene:init(x)
     -- you can accept and set parameters here
     displayMode(FULLSCREEN)
     noFill()
     noSmooth()
     noStroke()
-    pushStyle() 
-     sprite("Dropbox:Condition Green") 
+    pushStyle()  
     
     startTime = ElapsedTime
     
-    cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
-    desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
-    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-660))
-    homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
-    settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
-    nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
-    backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-195, HEIGHT-680))
-    yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
-    noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
+    backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
          pencil = {}
     pencil["item"] = "Dropbox:pencil"
@@ -124,7 +118,9 @@ function BuyingMoreItemsScene:init(x)
     trophy["name"] = "trophy"
    
     table.insert(itemsToSell, trophy)
-    print(itemsToSell[11]["item"])  
+    print(itemsToSell[11]["item"])
+    
+    draw1()
     
     firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
     firstThingTheyAreBuying.draggable = true
@@ -139,17 +135,15 @@ function BuyingMoreItemsScene:init(x)
     secondThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+2]["cost"])
     thirdThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+3]["cost"])
     fourthThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+4]["cost"]) 
- 
-    sceneDialog = ShowDialog("Would you like to buy any more items?",vec2(WIDTH/2, HEIGHT/2),400,200)
-    sceneDialog:setFont("Courier", 25)
-    sceneDialog:show()
     
+  
     end
 
-function BuyingMoreItemsScene:draw()
+function CompleteBuyingProcessScene:draw()
     -- Codea does not automatically call this method
+   
     background(40, 40, 50)
-    sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
+    sprite("Dropbox:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
     fill(0, 0, 0, 255)
     fontSize(50)
@@ -162,6 +156,8 @@ function BuyingMoreItemsScene:draw()
     -- This sets a dark background color 
     
     -- this displays desk,girl/boy and buttons
+    
+   
     
     sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
     sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
@@ -176,6 +172,9 @@ function BuyingMoreItemsScene:draw()
     text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+250, HEIGHT-290)
     text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+350, HEIGHT-290)  
     
+    popStyle()
+    
+    
      cashier:draw()
      desk:draw()
      basket:draw()
@@ -184,27 +183,55 @@ function BuyingMoreItemsScene:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
      settingsButton:draw()
-     homeButton:draw()  
-     sceneDialog:draw()
-     yesBox:draw()
-     noBox:draw()
-    
-    fontSize(20)
-    text ("NO", WIDTH/2-50, HEIGHT/2-45)
-    text ("YES", WIDTH/2+50, HEIGHT/2-45)
-    popStyle()
-    
+     homeButton:draw()
+     cashierDialog:draw()  
+    if (currentMoneyValue == currentItemSelectedCost) then
+         if (startTime + 5 < ElapsedTime) then
+            cashierDialog:hide()
+            Scene.Change("buyingMoreItemsScene")
+    end
+        elseif (currentMoneyValue ~= currentItemSelectedCost) then
+         if (startTime + 8 < ElapsedTime) then
+            Scene.Change("payingScene")
+    end
+        end
+   
     end 
 
-function BuyingMoreItemsScene:touched(touch)
+function CompleteBuyingProcessScene:touched(touch)
     -- Codea does not automatically call this method 
-     sceneDialog:touched(touch)
-    yesBox:touched(touch)
-    noBox:touched(touch)
     
-    if (yesBox.selected == true) then
-        Scene.Change ("buyingScene")
-        elseif (noBox.selected == true) then
+    settingsButton:touched(touch)
+    homeButton:touched(touch)  
+    backButton:touched(touch)
+    cashierDialog:touched(touch) 
+
+    end
+
+function draw1()
+     if (currentMoneyValue == currentItemSelectedCost) then
+        cashierDialog = ShowDialog("Congratulations! You have successfully bought the " .. currentItemSelectedName .. ".",vec2(WIDTH/2-5, HEIGHT-310), 350,200)
+   cashierDialog:setFont("Courier", 28)
+    cashierDialog:show()
+        pointsInLevel = pointsInLevel + 1
+        currentMoneyValue = 0
+        currentItemSelected = ""
+        currentItemSelectedName = ""
+        currentItemSelectedCost = 0
+        elseif (currentMoneyValue ~= currentItemSelectedCost) then
+        cashierDialog = ShowDialog("Sorry! That is not the correct amount of money needed to buy the " ..  currentItemSelectedName .. ". Please Try again.",vec2(WIDTH/2-5, HEIGHT-310), 350, 190)
+    cashierDialog:setFont("Courier", 25)
+    cashierDialog:show()
+        currentMoneyValue = 0
+        wrongCounter = wrongCounter + 1
+        end
+    if (wrongCounter > 3) then
+            cashierDialog:hide()
+            wrongCounter = 0
+        Scene.Change ("lastClueScene")
+    end
+    
+    if (pointsInLevel == 4) then
         Scene.Change ("mainGameScene")
     end
 end
