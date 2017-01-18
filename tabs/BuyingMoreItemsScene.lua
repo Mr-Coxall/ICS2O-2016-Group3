@@ -30,7 +30,7 @@ function BuyingMoreItemsScene:init(x)
     
     cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
     desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
-    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-660))
+    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-6))
     homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
     settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
     nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
@@ -38,7 +38,7 @@ function BuyingMoreItemsScene:init(x)
     yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
     noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     
-         pencil = {}
+    pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"

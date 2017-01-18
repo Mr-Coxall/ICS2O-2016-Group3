@@ -31,13 +31,12 @@ function BuyingScene:init(x)
      sprite("Dropbox:Red Back Circle Button") 
     
     startTime = ElapsedTime
-    
+
     yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
     noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     nextButton1 = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
          pencil = {}
-    pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
     

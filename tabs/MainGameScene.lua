@@ -24,6 +24,7 @@ function MainGameScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
+
     sprite("Dropbox:trophy") 
     
     cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))

@@ -32,6 +32,9 @@ function setup()
     pushStyle()    
     
      -- create the scenes
+      Scene("completeBuyingProcessScene", CompleteBuyingProcessScene)
+      Scene("buyingMoreItemsScene", BuyingMoreItemsScene)
+      Scene("achievementsScene", AchievementsScene)
       Scene("companyLogoScene", CompanyLogoScene)
       Scene("gameLogoScene", GameLogoScene)
       Scene("mainMenuScene", MainMenuScene)
