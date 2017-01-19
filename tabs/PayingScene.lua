@@ -37,7 +37,6 @@ function PayingScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-
      sprite("Dropbox:twoDollar") 
     startTime = ElapsedTime
     

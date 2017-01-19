@@ -32,7 +32,7 @@ function CompleteBuyingProcessScene:init(x)
     
     backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
-    pencil = {}
+         pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil"
@@ -158,6 +158,7 @@ function CompleteBuyingProcessScene:draw()
     -- this displays desk,girl/boy and buttons
     
    
+    
     sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
     sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
     sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)

@@ -24,7 +24,6 @@ function MainGameScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-
     sprite("Dropbox:trophy") 
     
     cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
@@ -140,7 +139,7 @@ function MainGameScene:init(x)
     cashierDialog:setFont("Courier", 25)
     cashierDialog:show()
     
-   
+    speech.say("Hello! Welcome to Shop Mart! Drag the items you want to buy to the basket. Please press the next button to start buying an item.")
     end
 
 function MainGameScene:draw()
