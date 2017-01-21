@@ -16,7 +16,7 @@ DEBUG_GAMECENTER = true
 currentLevel = 1
 musicPlaying = false
 gender = sprite("Dropbox:girl")
---levelSelected = 
+--currentLevel = 
 
 -- local variables to this scene
 

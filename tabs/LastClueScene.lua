@@ -4,17 +4,12 @@
 -- Created on: November 25, 2016
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
-
 LastClueScene = class()
-
 local shopperMoney = {}
 local itemsToSell = {}
 currentMoneyValue = 0
 local touchingCounter = true
 local startTime
-
-levelSelected = 1
-pointsInLevel = 0
 
 local firstThingTheyAreBuying
 local secondThingTheyAreBuying
@@ -28,28 +23,25 @@ local moneyPieceFour
 
 function LastClueScene:init(x)
     -- you can accept and set parameters here
-   displayMode(FULLSCREEN)
+    displayMode(FULLSCREEN)
     noFill()
     noSmooth()
     noStroke()
     pushStyle() 
-    sprite("Dropbox:textbox") 
     startTime = ElapsedTime
     
-    cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
-    desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
-    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-660))
-    homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
-    settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
-    nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
+    cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
+    desk = SpriteObject("Dropbox:desk", vec2(WIDTH/2-220, HEIGHT/2-210))
+    basket = SpriteObject("Dropbox:basket", vec2(WIDTH/2-220, HEIGHT/2-220))
+    homeButton = Button("Dropbox:homeButton", vec2(WIDTH/2-450, HEIGHT/2+320))
+    settingsButton = Button("Dropbox:Blue Settings Button", vec2(WIDTH/2-340, HEIGHT/2+320))
+    nextButton = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
-    pencil["name"] = "pencil"
-    
+    pencil["name"] = "pencil" 
     table.insert(itemsToSell, pencil)
-    print(itemsToSell[1]["item"])
      
     car = {}
     car["item"] = "Dropbox:car"
@@ -57,23 +49,20 @@ function LastClueScene:init(x)
     car["name"] = "car"
      
     table.insert(itemsToSell, car)
-    print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Dropbox:Chest Closed"
+    present["item"] = "Dropbox:present"
     present["cost"] = 0.30
     present["name"] = "present"
 
     table.insert(itemsToSell, present)
-    print(itemsToSell[3]["item"])
     
-     baseball = {}
-    baseball["item"] = "Dropbox:basketball"
-    baseball["cost"] = 1.25
-    baseball["name"] = "basketball"
+    basketball = {}
+    basketball["item"] = "Dropbox:basketball"
+    basketball["cost"] = 1.25
+    basketball["name"] = "basketball"
       
-    table.insert(itemsToSell, baseball)
-    print(itemsToSell[4]["item"])
+    table.insert(itemsToSell, basketball)
     
     football = {}
     football["item"] = "Dropbox:football"
@@ -81,15 +70,13 @@ function LastClueScene:init(x)
     football["name"] = "football"
    
     table.insert(itemsToSell, football)
-    print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Dropbox:Character Boy"
+    kitten["item"] = "Dropbox:kitten"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
     table.insert(itemsToSell, kitten)
-    print(itemsToSell[6]["item"]) 
     
     glasses = {}
     glasses["item"] = "Dropbox:glasses"
@@ -97,23 +84,34 @@ function LastClueScene:init(x)
     glasses["name"] = "glasses"
  
     table.insert(itemsToSell, glasses)
-    print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Dropbox:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:teddyBear"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
     table.insert(itemsToSell, teddyBear)
-    print(itemsToSell[8]["item"])
+    
+    diaper = {}
+    diaper["item"] = "Dropbox:diaper"
+    diaper["cost"] = 3.50
+    diaper["name"] = "diaper"
+   
+    table.insert(itemsToSell, diaper)  
+    
+    ball = {}
+    ball["item"] = "Dropbox:ball"
+    ball["cost"] = 4.10
+    ball["name"] = "ball"
+    
+    table.insert(itemsToSell, ball)  
     
     book = {}
-    book["item"] = "Dropbox:Chest Lid"
+    book["item"] = "Dropbox:book"
     book["cost"] = 5.25
     book["name"] = "book"
   
     table.insert(itemsToSell, book)
-    print(itemsToSell[9]["item"])
     
     angel = {}
     angel["item"] = "Dropbox:angel"
@@ -121,126 +119,172 @@ function LastClueScene:init(x)
     angel["name"] = "angel"
   
     table.insert(itemsToSell, angel)
-    print(itemsToSell[10]["item"])
       
     trophy = {}
     trophy["item"] = "Dropbox:trophy"
-    trophy["cost"] = 10
+    trophy["cost"] = 10.00
     trophy["name"] = "trophy"
    
-    table.insert(itemsToSell, trophy)
-    print(itemsToSell[11]["item"])
+    table.insert(itemsToSell, trophy)  
+ 
+    babyWipes = {}
+    babyWipes["item"] = "Dropbox:babyWipes"
+    babyWipes["cost"] = 12.05
+    babyWipes["name"] = "baby wipes"
+   
+    table.insert(itemsToSell, babyWipes)  
     
+    babySoap = {}
+    babySoap["item"] = "Dropbox:babySoap"
+    babySoap["cost"] = 12.35
+    babySoap["name"] = "baby soap"
+   
+    table.insert(itemsToSell, babySoap)  
     
-      fiveCent = {}
-    fiveCent["item"] = "Dropbox:Door Tall Open"
+    hairbrush = {}
+    hairbrush["item"] = "Dropbox:hairbrush"
+    hairbrush["cost"] = 13.00
+    hairbrush["name"] = "hairbrush"
+   
+    table.insert(itemsToSell, hairbrush)  
+    
+    babyBottle = {}
+    babyBottle["item"] = "Dropbox:babyBottle"
+    babyBottle["cost"] = 14.25
+    babyBottle["name"] = "baby bottle"
+   
+    table.insert(itemsToSell, babyBottle)  
+    
+    sunscreen = {}
+    sunscreen["item"] = "Dropbox:sunscreen"
+    sunscreen["cost"] = 15.85
+    sunscreen["name"] = "sunscreen"
+   
+    table.insert(itemsToSell, sunscreen)  
+    
+    shoes = {}
+    shoes["item"] = "Dropbox:shoes"
+    shoes["cost"] = 16.30
+    shoes["name"] = "shoes"
+   
+    table.insert(itemsToSell, shoes)  
+    
+    babyDoll = {}
+    babyDoll["item"] = "Dropbox:babyDoll"
+    babyDoll["cost"] = 19.80
+    babyDoll["name"] = "baby doll"
+   
+    table.insert(itemsToSell, babyDoll)  
+    
+    fiveCent = {}
+    fiveCent["item"] = "Dropbox:fiveCent"
     fiveCent["cost"] = 0.05
     
     table.insert(shopperMoney, fiveCent)
-    print(shopperMoney[1]["item"])
     
     tenCent = {}
     tenCent["item"] = "Dropbox:tenCent"
-    tenCent["cost"] = 0.10
     
     table.insert(shopperMoney, tenCent)
-    print(shopperMoney[2]["item"])
     
     twentyFiveCent = {}
     twentyFiveCent["item"] = "Dropbox:twentyFiveCent"
     twentyFiveCent["cost"] = 0.25
      
     table.insert(shopperMoney, twentyFiveCent)
-    print(shopperMoney[3]["item"])
     
     oneDollar = {}
     oneDollar["item"] = "Dropbox:oneDollar"
     oneDollar["cost"] = 1.00
      
     table.insert(shopperMoney, oneDollar)
-    print(shopperMoney[4]["item"])
     
-      twoDollar = {}
+    twoDollar = {}
     twoDollar["item"] = "Dropbox:twoDollar"
     twoDollar["cost"] = 2.00
       
     table.insert(shopperMoney, twoDollar)
-    print(shopperMoney[5]["item"])
     
     FiveDollarBill = {}
     FiveDollarBill["item"] = "Dropbox:fiveDollar"
     FiveDollarBill["cost"] = 5.00
     
     table.insert(shopperMoney, FiveDollarBill)
-    print(shopperMoney[6]["item"])
     
-       firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
+    firstThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+20, HEIGHT/2+120))
     firstThingTheyAreBuying.draggable = true
-    secondThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+2]["item"], vec2(WIDTH/2+150, HEIGHT-150))
+    secondThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+135, HEIGHT/2+120))
     secondThingTheyAreBuying.draggable = true
-    thirdThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+3]["item"], vec2(WIDTH/2+250, HEIGHT-150),10,50)
+    thirdThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+3]["item"], vec2(WIDTH/2+270, HEIGHT/2+120))
     thirdThingTheyAreBuying.draggable = true
-    fourthThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+4]["item"], vec2(WIDTH/2+350, HEIGHT-150))
+    fourthThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+4]["item"], vec2(WIDTH/2+424, HEIGHT/2+120))
     fourthThingTheyAreBuying.draggable = true
     
-    firstThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+1]["cost"])
-    secondThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+2]["cost"])
-    thirdThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+3]["cost"])
-    fourthThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+4]["cost"])
+    firstThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+1]["cost"])
+    secondThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+2]["cost"])
+    thirdThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+3]["cost"])
+    fourthThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+4]["cost"])
     
-    moneyPieceOne = SpriteObject(shopperMoney[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+130, HEIGHT-550))
+    moneyPieceOne = Button(shopperMoney[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+130, HEIGHT-550))
     moneyPieceOne.draggable = true
-    moneyPieceTwo = SpriteObject(shopperMoney[(levelSelected-1)*4+2]["item"], vec2(WIDTH/2+180, HEIGHT-450))
+    moneyPieceOneShowing = SpriteObject(shopperMoney[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+130, HEIGHT-550))
+    moneyPieceOneShowing.draggable = true
+    moneyPieceOneShowing.objectImage = ""
+    moneyPieceTwo = Button(shopperMoney[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+180, HEIGHT-450))
     moneyPieceTwo.draggable = true
-    moneyPieceThree = SpriteObject(shopperMoney[(levelSelected-1)*4+3]["item"], vec2(WIDTH/2+290, HEIGHT-510))
+    moneyPieceTwoShowing = SpriteObject(shopperMoney[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+180, HEIGHT-450))
+    moneyPieceTwoShowing.draggable = true
+    moneyPieceTwoShowing.objectImage = ""
+    moneyPieceThree = Button(shopperMoney[(currentLevel-1)*4+3]["item"], vec2(WIDTH/2+290, HEIGHT-510))
     moneyPieceThree.draggable = true
-    moneyPieceFour = SpriteObject(shopperMoney[(levelSelected-1)*4+4]["item"], vec2(WIDTH/2+250, HEIGHT-630))  
+    moneyPieceThreeShowing = SpriteObject(shopperMoney[(currentLevel-1)*4+3]["item"], vec2(WIDTH/2+290, HEIGHT-510))
+    moneyPieceThreeShowing.draggable = true
+    moneyPieceThreeShowing.objectImage = ""
+    moneyPieceFour = Button(shopperMoney[(currentLevel-1)*4+4]["item"], vec2(WIDTH/2+289, HEIGHT-630))  
     moneyPieceFour.draggable = true
+    moneyPieceFourShowing = SpriteObject(shopperMoney[(currentLevel-1)*4+4]["item"], vec2(WIDTH/2+289, HEIGHT-630))  
+    moneyPieceFourShowing.draggable = true
+    moneyPieceFourShowing.objectImage = ""
     
-    moneyPieceOneValue = (shopperMoney[(levelSelected-1)*4+1]["cost"])
-    moneyPieceTwoValue = (shopperMoney[(levelSelected-1)*4+2]["cost"])
-    moneyPieceThreeValue = (shopperMoney[(levelSelected-1)*4+3]["cost"])
-    moneyPieceFourValue = (shopperMoney[(levelSelected-1)*4+4]["cost"])
+    moneyPieceOneValue = (shopperMoney[(currentLevel-1)*4+1]["cost"])
+    moneyPieceTwoValue = (shopperMoney[(currentLevel-1)*4+2]["cost"])
+    moneyPieceThreeValue = (shopperMoney[(currentLevel-1)*4+3]["cost"])
+    moneyPieceFourValue = (shopperMoney[(currentLevel-1)*4+4]["cost"])
     
-    firstThingTheyAreBuyingName = (itemsToSell[(levelSelected-1)*4+1]["name"])
-    secondThingTheyAreBuyingName = (itemsToSell[(levelSelected-1)*4+2]["name"])
-    thirdThingTheyAreBuyingName = (itemsToSell[(levelSelected-1)*4+3]["name"])
-    fourthThingTheyAreBuyingName = (itemsToSell[(levelSelected-1)*4+4]["cost"])
+    firstThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+1]["name"])
+    secondThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+2]["name"])
+    thirdThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+3]["name"])
+    fourthThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+4]["cost"])
     
-    cashierDialog = ShowDialog("Use the glowing money pieces to buy the " .. currentItemSelectedName .. " that costs $" .. currentItemSelectedCost .. ". Please press the next button when you are finished paying for the " .. currentItemSelectedName ,vec2(WIDTH/2-5, HEIGHT-310), 350,190)
+    cashierDialog = ShowDialog("Use the glowing money pieces to buy the " .. currentItemSelectedName .. " that costs $" .. currentItemSelectedCost .. ". Please press the next button when you are finished paying for the " .. currentItemSelectedName ,vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
     cashierDialog:setFont("Courier", 25)
-    cashierDialog:show()
-    
+    cashierDialog:show()   
 end
-
 function LastClueScene:draw()
     -- Codea does not automatically call this method
-      background(40, 40, 50)
-    sprite("Dropbox:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
+    background(40, 40, 50)
+    sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
     fill(0, 0, 0, 255)
     fontSize(50)
     font("Courier")  
     pushStyle()
     
-    text ("Level " .. levelSelected , WIDTH-130, HEIGHT-50)
+    text ("Level " .. currentLevel , WIDTH/2+390, HEIGHT/2+350)
     fontSize(30)
     text("NEXT", WIDTH-73, HEIGHT-752)
-    -- This sets a dark background color 
-   -- sprite("Project:basket")
-    -- this displays desk,girl/boy and buttons
 
-    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290)
+    sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+155, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+289, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20)
     
     fontSize(15)
-    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+50, HEIGHT-290)
-    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+150, HEIGHT-290)
-    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+250, HEIGHT-290)
-    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+350, HEIGHT-290)  
+    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
+    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+155, HEIGHT/2-20)
+    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+289, HEIGHT/2-20)
+    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+424, HEIGHT/2-20)  
     
     popStyle()
     
@@ -255,53 +299,67 @@ function LastClueScene:draw()
      homeButton:draw()
      nextButton:draw()
      undoButton:draw()
-    sprite("Dropbox:hand", WIDTH-310, HEIGHT-500)
-    cashierDialog:draw()
+     sprite("Dropbox:hand", WIDTH/2+260, HEIGHT-500)
+     cashierDialog:draw()
     
     fontSize(30)
-    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT-730)
+    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT/2-340)
     
      moneyPieceOne:draw()
      moneyPieceTwo:draw()
      moneyPieceThree:draw()
      moneyPieceFour:draw()
+    
+    if (moneyPieceOne.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue, vec2(WIDTH/2-5, HEIGHT/2+150), 300,200)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show()
+    elseif (moneyPieceTwo.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 300,200)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show()
+    elseif (moneyPieceThree.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show() 
+    elseif (moneyPieceFour.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show()
+        end
 end
-
 function LastClueScene:touched(touch)
     -- Codea does not automatically call this method   
-        if moneyPieceOne:isTouching(cashier) == true then
-        print("touching")
-        recentlyGivenmoney = moneyPieceOneValue
-currentMoneyValue = currentMoneyValue + moneyPieceOneValue
-            cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue, vec2(WIDTH/2-5, HEIGHT-310), 300,200)
-    cashierDialog:setFont("Courier", 30)
-    cashierDialog:show()
- elseif moneyPieceTwo:isTouching(cashier) == true then
-        print("touching1")
-        recentlyGivenmoney = moneyPieceTwoValue
-currentMoneyValue = currentMoneyValue + moneyPieceTwoValue
-        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT-310), 300,200)
-    cashierDialog:setFont("Courier", 30)
-    cashierDialog:show()
- elseif moneyPieceThree:isTouching(cashier) == true then
-        print("touching2")
-        recentlyGivenmoney = moneyPieceThreeValue
-currentMoneyValue = currentMoneyValue + moneyPieceThreeValue
-         cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT-310), 200,100)
-    cashierDialog:setFont("Courier", 30)
-    cashierDialog:show() 
- elseif moneyPieceFour:isTouching(cashier) == true then
-        print("touching3")
-        recentlyGivenmoney = moneyPieceFourValue
-        currentMoneyValue = currentMoneyValue + moneyPieceFourValue
-        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT-310), 200,100)
-    cashierDialog:setFont("Courier", 30)
-    cashierDialog:show()
-            end
+       if (moneyPieceOne.selected == true) then
+           cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue, vec2(WIDTH/2-5, HEIGHT/2+150), 300,200)
+           cashierDialog:setFont("Courier", 30)
+           cashierDialog:show()
+           currenValueGiven = moneyPieceOneValue
+           currentMoneyValue = currentMoneyValue + currenValueGiven
+           cashierDialog:hide()
+       elseif (moneyPieceTwo.selected == true) then
+           currenValueGiven = moneyPieceTwoValue
+           currentMoneyValue = currentMoneyValue + currenValueGiven
+           cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 300,200)
+           cashierDialog:setFont("Courier", 30)
+           cashierDialog:show()
+       elseif (moneyPieceThree.selected == true) then
+           currenValueGiven = moneyPieceThreeValue
+           currentMoneyValue = currentMoneyValue + currenValueGiven
+           cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+           cashierDialog:setFont("Courier", 30)
+           cashierDialog:show() 
+       elseif (moneyPieceFour.selected == true) then
+           currenValueGiven = moneyPieceFourValue
+           currentMoneyValue = currentMoneyValue + currenValueGiven
+           cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+           cashierDialog:setFont("Courier", 30)
+           cashierDialog:show()
+           end
     
      if (undoButton.selected == true) then
-        currentMoneyValue = currentMoneyValue - recentlyGivenmoney
-    end
+         currentMoneyValue = currentMoneyValue - recentlyGivenmoney
+         end
         
     settingsButton:touched(touch)
     homeButton:touched(touch)
@@ -316,8 +374,16 @@ currentMoneyValue = currentMoneyValue + moneyPieceThreeValue
     
 
      if (nextButton.selected == true) then
-        cashierDialog:hide()
-        Scene.Change("completeBuyingProcessScene")
-        end
-
+         sound(SOUND_HIT, 4344)
+         cashierDialog:hide()
+         Scene.Change("completeBuyingProcessScene")
+         end
+    if (settingsButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+        Scene.Change ("settingsScene")
+    end
+    if (homeButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+        Scene.Change ("mainMenuScene")
+    end
 end

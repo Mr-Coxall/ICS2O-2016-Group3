@@ -30,7 +30,6 @@ function MainMenuScene:init()
     end
     
     -- scene setup code here
-    sprite()
     startButton = Button ("Dropbox:startButton", vec2(WIDTH/2,HEIGHT/2))
     settingsButton = Button ("Dropbox:settingsButton", vec2(WIDTH/2, HEIGHT/2-110))
     achievementsButton = Button ("Dropbox:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
