@@ -28,7 +28,7 @@ function CompleteBuyingProcessScene:init(x)
     
     nextButton2 = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
     
-    pencil = {}
+         pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil" 
@@ -183,6 +183,7 @@ function CompleteBuyingProcessScene:init(x)
     thirdThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+3]["cost"])
     fourthThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+4]["cost"])   
 end
+
 function CompleteBuyingProcessScene:draw()
     -- Codea does not automatically call this method   
     background(40, 40, 50)
@@ -195,13 +196,19 @@ function CompleteBuyingProcessScene:draw()
     
     text ("Level " .. currentLevel , WIDTH/2+390, HEIGHT/2+350)
     fontSize(30)
-    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT/2-340)
-       
-    sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+155, HEIGHT/2-20)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+289, HEIGHT/2-20)
-    sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20) 
+    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT-730)
+    -- This sets a dark background color 
+    
+    -- this displays desk,girl/boy and buttons
+    
+   
+    
+    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
+    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
+    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290) 
+   -- sprite())
     
     fontSize(15)
     text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
@@ -225,6 +232,7 @@ function CompleteBuyingProcessScene:draw()
     text("NEXT", WIDTH-73, HEIGHT-752)
     popStyle()  
 end 
+
 function CompleteBuyingProcessScene:touched(touch)
     -- Codea does not automatically call this method 
     
@@ -238,22 +246,23 @@ function CompleteBuyingProcessScene:touched(touch)
             sound(SOUND_HIT, 4344)
             cashierDialog:hide()
             Scene.Change("buyingMoreItemsScene")
-            end
+        end
     end
     if (nextButton2.selected == true) then
         sound(SOUND_HIT, 4344)
         if (pointsInLevel == 4) then
-        pointsInLevel = 0
-        Scene.Change ("levelScene")
+            pointsInLevel = 0
+            Scene.Change ("levelScene")
         end
     end
     if (nextButton2.selected == true) then
         if (currentMoneyValue ~= currentItemSelectedCost) then
             sound(SOUND_HIT, 4344)
             Scene.Change("payingScene")    
-            end  
+        end  
     end
 end 
+
 function draw1()
      if (currentMoneyValue == currentItemSelectedCost) then
         cashierDialog = ShowDialog("Congratulations! You have successfully bought the " .. currentItemSelectedName .. ".",vec2(WIDTH/2-5, HEIGHT/2+150), 350,200)
@@ -270,13 +279,13 @@ function draw1()
         cashierDialog:show()
         currentMoneyValue = 0
         wrongCounter = wrongCounter + 1
-        end
+    end
     
     if (wrongCounter > 3) then
         cashierDialog:hide()
         wrongCounter = 0
         Scene.Change ("lastClueScene")
-        end
+    end
     
     if (settingsButton.selected == true) then
         sound(SOUND_HIT, 4344)

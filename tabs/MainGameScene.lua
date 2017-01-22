@@ -25,7 +25,8 @@ function MainGameScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-    sprite("Dropbox:homeButton") 
+
+    sprite("Dropbox:trophy") 
     
     --if (cashier == girlCashier) then
     cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
@@ -195,9 +196,11 @@ function MainGameScene:init(x)
     cashierDialog:setFont("Courier", 25)
     cashierDialog:show()
     
-    speech.say("Hello! Welcome to Shop Mart! Drag 1 item you want to buy to the basket. Please press the next button to start buying an item.")
+    speech.say("Hello! Welcome to Shop Mart! Drag the items you want to buy to the basket. Please press the next button to start buying an item.")
 end
+
 function MainGameScene:draw()
+    --
     background(40, 40, 50)
     sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
     
@@ -236,7 +239,8 @@ function MainGameScene:draw()
      homeButton:draw()
      nextButton:draw()
      cashierDialog:draw()
-    end
+end
+
 function MainGameScene:touched(touch)
     -- Codea does not automatically call this method  
     

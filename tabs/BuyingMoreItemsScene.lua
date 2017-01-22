@@ -20,14 +20,17 @@ function BuyingMoreItemsScene:init(x)
     noStroke()
     pushStyle() 
     
-    cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
-    desk = SpriteObject("Dropbox:desk", vec2(WIDTH/2-220, HEIGHT/2-210))
-    basket = SpriteObject("Dropbox:basket", vec2(WIDTH/2-220, HEIGHT/2-220))
-    homeButton = Button("Dropbox:homeButton", vec2(WIDTH/2-450, HEIGHT/2+320))
-    settingsButton = Button("Dropbox:Blue Settings Button", vec2(WIDTH/2-340, HEIGHT/2+320))
-    nextButton = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
-    yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+20, HEIGHT/2+100))
-    noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2+100))
+    startTime = ElapsedTime
+    
+    cashier = SpriteObject("Dropbox:cashierGirl", vec2(WIDTH-740, HEIGHT-500))
+    desk = SpriteObject("Dropbox:desk", vec2(WIDTH-740, HEIGHT-560))
+    basket = SpriteObject("Dropbox:basket", vec2(WIDTH-740, HEIGHT-660))
+    homeButton = Button("Dropbox:Red Level Menu Button", vec2(WIDTH-950, HEIGHT-80))
+    settingsButton = Button("Dropbox:Red Settings Button", vec2(WIDTH-830, HEIGHT-80))
+    nextButton = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
+    backButton = Button("Dropbox:Red Back Circle Button", vec2(WIDTH-195, HEIGHT-680))
+    yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
+    noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
@@ -186,6 +189,7 @@ function BuyingMoreItemsScene:init(x)
     sceneDialog:setFont("Courier", 25)
     sceneDialog:show()   
 end
+
 function BuyingMoreItemsScene:draw()
     -- Codea does not automatically call this method
     background(40, 40, 50)
@@ -230,6 +234,7 @@ function BuyingMoreItemsScene:draw()
     text ("YES", WIDTH/2+20, HEIGHT/2+100)
     popStyle()    
 end 
+
 function BuyingMoreItemsScene:touched(touch)
     -- Codea does not automatically call this method 
      sceneDialog:touched(touch)

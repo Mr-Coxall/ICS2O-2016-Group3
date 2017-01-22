@@ -1,11 +1,8 @@
--- ICS2O-2016-Group3
-
 -- Created by: Sidney Kang
 -- Created on: November 25, 2016
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
 LastClueScene = class()
-
 local shopperMoney = {}
 local itemsToSell = {}
 
@@ -38,7 +35,7 @@ function LastClueScene:init(x)
     settingsButton = Button("Dropbox:Blue Settings Button", vec2(WIDTH/2-340, HEIGHT/2+320))
     nextButton = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
     
-    pencil = {}
+          pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil" 

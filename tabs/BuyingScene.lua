@@ -28,9 +28,11 @@ function BuyingScene:init()
     noStroke()
     pushStyle() 
     
-    yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+20, HEIGHT/2+100))
-    noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2+100))
-    nextButton1 = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
+    startTime = ElapsedTime
+    
+    yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
+    noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
+    nextButton1 = Button("Dropbox:Red Forward Circle Button", vec2(WIDTH-75, HEIGHT-680))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
@@ -196,6 +198,7 @@ function BuyingScene:init()
     
     speech.say("Please select only 1 item.")
 end
+
 function BuyingScene:draw()
     -- Codea does not automatically call this method
     background(40, 40, 50)
@@ -251,9 +254,10 @@ function BuyingScene:draw()
                cashierDialog = ShowDialog("Please select 1 item.",vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
                cashierDialog:setFont("Courier", 25)
                cashierDialog:show()
-               end
+        end
     end
 end 
+
 function BuyingScene:touched(touch)
     -- Codea does not automatically call this method   
     if (firstThingTheyAreBuying:isTouching(basket) == true) then
@@ -311,7 +315,7 @@ function BuyingScene:touched(touch)
         fourthThingTheyAreBuying.objectCurrentLocation = fourthThingTheyAreBuying.objectStartLocation
     elseif (fourthThingHasTouched == true) then
         fourthThingTheyAreBuying.objectCurrentLocation = basket.objectStartLocation 
-        end
+    end
      
     firstThingTheyAreBuying:touched(touch)
     secondThingTheyAreBuying:touched(touch)
@@ -334,7 +338,7 @@ function BuyingScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
-        end
+    end
     if (yesBox.selected == true) then
         sound(SOUND_HIT, 4344)
         cashierDialog:hide()
@@ -347,7 +351,7 @@ function BuyingScene:touched(touch)
         thirdThingHasTouched = false
         fourthThingHasTouched = false
         Scene.Change ("buyingScene")
-        end
+    end
     if (settingsButton.selected == true) then
         sound(SOUND_HIT, 4344)
         Scene.Change ("settingsScene")
