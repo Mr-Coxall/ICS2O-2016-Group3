@@ -270,7 +270,7 @@ function draw1()
     
     if (pointsInLevel == 4) then
         pointsInLevel = 0
-        Scene.Change ("mainGameScene")
+        Scene.Change ("levelScene")
         end
     
     if (settingsButton.selected == true) then

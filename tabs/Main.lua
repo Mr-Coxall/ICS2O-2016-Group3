@@ -13,7 +13,7 @@
 DEBUG_GAMECENTER = true
 
 -- Global variables to the entire project
-currentLevel = 1
+currentLevel = 5
 musicPlaying = false
 gender = sprite("Dropbox:girl")
 --currentLevel = 
