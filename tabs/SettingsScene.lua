@@ -95,10 +95,6 @@ function SettingsScene:touched(touch)
     elseif (offMusicButton.selected == true) then
         music.stop()
     elseif (onMusicButton.selected == true) then
-        music("Game Music One:Toy Land", 0.30)
-        
-        
-            
-            
+        music("Game Music One:Toy Land", 0.30)         
         end
 end

@@ -4,18 +4,13 @@
 -- Created on: November 25, 2016
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
-
 BuyingMoreItemsScene = class()
 local itemsToSell = {}
-
-levelSelected = 1
-pointsInLevel = 0
 
 local firstThingTheyAreBuying
 local secondThingTheyAreBuying
 local thirdThingTheyAreBuying
 local fourthThingTheyAreBuying
-local startTime
 
 function BuyingMoreItemsScene:init(x)
     -- you can accept and set parameters here
@@ -24,7 +19,6 @@ function BuyingMoreItemsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-     sprite("Dropbox:Condition Green") 
     
     startTime = ElapsedTime
     
@@ -38,13 +32,11 @@ function BuyingMoreItemsScene:init(x)
     yesBox = Button("Dropbox:Condition Green", vec2(WIDTH/2+50, HEIGHT/2-45))
     noBox = Button("Dropbox:Condition Red", vec2(WIDTH/2-50, HEIGHT/2-45))
     
-         pencil = {}
+    pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
-    pencil["name"] = "pencil"
-    
+    pencil["name"] = "pencil" 
     table.insert(itemsToSell, pencil)
-    print(itemsToSell[1]["item"])
      
     car = {}
     car["item"] = "Dropbox:car"
@@ -52,23 +44,20 @@ function BuyingMoreItemsScene:init(x)
     car["name"] = "car"
      
     table.insert(itemsToSell, car)
-    print(itemsToSell[2]["item"])
     
     present = {}
-    present["item"] = "Dropbox:Chest Closed"
+    present["item"] = "Dropbox:present"
     present["cost"] = 0.30
     present["name"] = "present"
 
     table.insert(itemsToSell, present)
-    print(itemsToSell[3]["item"])
     
-     baseball = {}
-    baseball["item"] = "Dropbox:basketball"
-    baseball["cost"] = 1.25
-    baseball["name"] = "basketball"
+    basketball = {}
+    basketball["item"] = "Dropbox:basketball"
+    basketball["cost"] = 1.25
+    basketball["name"] = "basketball"
       
-    table.insert(itemsToSell, baseball)
-    print(itemsToSell[4]["item"])
+    table.insert(itemsToSell, basketball)
     
     football = {}
     football["item"] = "Dropbox:football"
@@ -76,15 +65,13 @@ function BuyingMoreItemsScene:init(x)
     football["name"] = "football"
    
     table.insert(itemsToSell, football)
-    print(itemsToSell[5]["item"])
     
     kitten = {}
-    kitten["item"] = "Dropbox:Character Boy"
+    kitten["item"] = "Dropbox:kitten"
     kitten["cost"] = 6.00
     kitten["name"] = "kitten"
    
     table.insert(itemsToSell, kitten)
-    print(itemsToSell[6]["item"]) 
     
     glasses = {}
     glasses["item"] = "Dropbox:glasses"
@@ -92,23 +79,34 @@ function BuyingMoreItemsScene:init(x)
     glasses["name"] = "glasses"
  
     table.insert(itemsToSell, glasses)
-    print(itemsToSell[7]["item"])
     
     teddyBear = {}
-    teddyBear["item"] = "Dropbox:Character Princess Girl"
+    teddyBear["item"] = "Dropbox:teddyBear"
     teddyBear["cost"] = 3.00
     teddyBear["name"] = "teddybear"
    
     table.insert(itemsToSell, teddyBear)
-    print(itemsToSell[8]["item"])
+    
+    diaper = {}
+    diaper["item"] = "Dropbox:diaper"
+    diaper["cost"] = 3.50
+    diaper["name"] = "diaper"
+   
+    table.insert(itemsToSell, diaper)  
+    
+    ball = {}
+    ball["item"] = "Dropbox:ball"
+    ball["cost"] = 4.10
+    ball["name"] = "ball"
+    
+    table.insert(itemsToSell, ball)  
     
     book = {}
-    book["item"] = "Dropbox:Chest Lid"
+    book["item"] = "Dropbox:book"
     book["cost"] = 5.25
     book["name"] = "book"
   
     table.insert(itemsToSell, book)
-    print(itemsToSell[9]["item"])
     
     angel = {}
     angel["item"] = "Dropbox:angel"
@@ -116,35 +114,81 @@ function BuyingMoreItemsScene:init(x)
     angel["name"] = "angel"
   
     table.insert(itemsToSell, angel)
-    print(itemsToSell[10]["item"])
       
     trophy = {}
     trophy["item"] = "Dropbox:trophy"
-    trophy["cost"] = 10
+    trophy["cost"] = 10.00
     trophy["name"] = "trophy"
    
-    table.insert(itemsToSell, trophy)
-    print(itemsToSell[11]["item"])  
+    table.insert(itemsToSell, trophy)  
+ 
+    babyWipes = {}
+    babyWipes["item"] = "Dropbox:babyWipes"
+    babyWipes["cost"] = 12.05
+    babyWipes["name"] = "baby wipes"
+   
+    table.insert(itemsToSell, babyWipes)  
     
-    firstThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+1]["item"], vec2(WIDTH/2+50, HEIGHT-150))
+    babySoap = {}
+    babySoap["item"] = "Dropbox:babySoap"
+    babySoap["cost"] = 12.35
+    babySoap["name"] = "baby soap"
+   
+    table.insert(itemsToSell, babySoap)  
+    
+    hairbrush = {}
+    hairbrush["item"] = "Dropbox:hairbrush"
+    hairbrush["cost"] = 13.00
+    hairbrush["name"] = "hairbrush"
+   
+    table.insert(itemsToSell, hairbrush)  
+    
+    babyBottle = {}
+    babyBottle["item"] = "Dropbox:babyBottle"
+    babyBottle["cost"] = 14.25
+    babyBottle["name"] = "baby bottle"
+   
+    table.insert(itemsToSell, babyBottle)  
+    
+    sunscreen = {}
+    sunscreen["item"] = "Dropbox:sunscreen"
+    sunscreen["cost"] = 15.85
+    sunscreen["name"] = "sunscreen"
+   
+    table.insert(itemsToSell, sunscreen)  
+    
+    shoes = {}
+    shoes["item"] = "Dropbox:shoes"
+    shoes["cost"] = 16.30
+    shoes["name"] = "shoes"
+   
+    table.insert(itemsToSell, shoes)  
+    
+    babyDoll = {}
+    babyDoll["item"] = "Dropbox:babyDoll"
+    babyDoll["cost"] = 19.80
+    babyDoll["name"] = "baby doll"
+   
+    table.insert(itemsToSell, babyDoll)  
+    
+    firstThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+20, HEIGHT/2+120))
     firstThingTheyAreBuying.draggable = true
-    secondThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+2]["item"], vec2(WIDTH/2+150, HEIGHT-150))
+    secondThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+135, HEIGHT/2+120))
     secondThingTheyAreBuying.draggable = true
-    thirdThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+3]["item"], vec2(WIDTH/2+250, HEIGHT-150),10,50)
+    thirdThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+3]["item"], vec2(WIDTH/2+270, HEIGHT/2+120),10,50)
     thirdThingTheyAreBuying.draggable = true
-    fourthThingTheyAreBuying = SpriteObject(itemsToSell[(levelSelected-1)*4+4]["item"], vec2(WIDTH/2+350, HEIGHT-150))
+    fourthThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+4]["item"], vec2(WIDTH/2+424, HEIGHT/2+120))
     fourthThingTheyAreBuying.draggable = true
     
-    firstThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+1]["cost"])
-    secondThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+2]["cost"])
-    thirdThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+3]["cost"])
-    fourthThingTheyAreBuyingCost = (itemsToSell[(levelSelected-1)*4+4]["cost"]) 
+    firstThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+1]["cost"])
+    secondThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+2]["cost"])
+    thirdThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+3]["cost"])
+    fourthThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+4]["cost"]) 
  
-    sceneDialog = ShowDialog("Would you like to buy any more items?",vec2(WIDTH/2, HEIGHT/2),400,200)
+    sceneDialog = ShowDialog("Would you like to buy any more items?",vec2(WIDTH/2-5, HEIGHT/2+150),350,200)
     sceneDialog:setFont("Courier", 25)
-    sceneDialog:show()
-    
-    end
+    sceneDialog:show()   
+end
 
 function BuyingMoreItemsScene:draw()
     -- Codea does not automatically call this method
@@ -156,25 +200,21 @@ function BuyingMoreItemsScene:draw()
     font("Courier")  
     pushStyle()
     
-    text ("Level " .. levelSelected , WIDTH-130, HEIGHT-50)
+    text ("Level " .. currentLevel, WIDTH/2+390, HEIGHT/2+350)
     fontSize(30)
-    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT-730)
-    -- This sets a dark background color 
-    
-    -- this displays desk,girl/boy and buttons
-    
-    sprite("Dropbox:shelf", WIDTH/2+200, HEIGHT-198)
-    sprite("Dropbox:Condition Green", WIDTH/2+50, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+150, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+250, HEIGHT-290)
-    sprite("Dropbox:Condition Green", WIDTH/2+350, HEIGHT-290) 
-   -- sprite())
+    text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT/2-340)
+     
+    sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+155, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+289, HEIGHT/2-20)
+    sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20) 
     
     fontSize(15)
-    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+50, HEIGHT-290)
-    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+150, HEIGHT-290)
-    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+250, HEIGHT-290)
-    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+350, HEIGHT-290)  
+    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
+    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+155, HEIGHT/2-20)
+    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+289, HEIGHT/2-20)
+    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+424, HEIGHT/2-20)  
     
      cashier:draw()
      desk:draw()
@@ -190,21 +230,36 @@ function BuyingMoreItemsScene:draw()
      noBox:draw()
     
     fontSize(20)
-    text ("NO", WIDTH/2-50, HEIGHT/2-45)
-    text ("YES", WIDTH/2+50, HEIGHT/2-45)
-    popStyle()
-    
-    end 
+    text ("NO", WIDTH/2-50, HEIGHT/2+100)
+    text ("YES", WIDTH/2+20, HEIGHT/2+100)
+    popStyle()    
+end 
 
 function BuyingMoreItemsScene:touched(touch)
     -- Codea does not automatically call this method 
      sceneDialog:touched(touch)
-    yesBox:touched(touch)
-    noBox:touched(touch)
+     yesBox:touched(touch)
+     noBox:touched(touch)
     
     if (yesBox.selected == true) then
+        sound(SOUND_HIT, 4344)
+        firstThingHasTouched = false
+        secondThingHasTouched = false
+        thirdThingHasTouched = false
+        fourthThingHasTouched = false
+        wrongCounter = 0
         Scene.Change ("buyingScene")
-        elseif (noBox.selected == true) then
+    elseif (noBox.selected == true) then
+        sound(SOUND_HIT, 4344)
+        wrongCounter = 0
         Scene.Change ("mainGameScene")
+        end
+    if (settingsButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+        Scene.Change ("settingsScene")
+    end
+    if (homeButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+        Scene.Change ("mainMenuScene")
     end
 end
