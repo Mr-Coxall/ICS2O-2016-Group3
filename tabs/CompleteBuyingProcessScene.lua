@@ -5,7 +5,9 @@
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
 CompleteBuyingProcessScene = class()
+
 local itemsToSell = {}
+
 currentItemSelected = ""
 currentItemSelectedName = ""
 
@@ -15,7 +17,6 @@ local firstThingTheyAreBuying
 local secondThingTheyAreBuying
 local thirdThingTheyAreBuying
 local fourthThingTheyAreBuying
-local startTime
 
 function CompleteBuyingProcessScene:init(x)
     -- you can accept and set parameters here
@@ -25,7 +26,7 @@ function CompleteBuyingProcessScene:init(x)
     noStroke()
     pushStyle()  
     
-    startTime = ElapsedTime
+    nextButton2 = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
@@ -217,7 +218,7 @@ function CompleteBuyingProcessScene:draw()
      fourthThingTheyAreBuying:draw()
      settingsButton:draw()
      homeButton:draw()
-     nextButton:draw()
+     nextButton2:draw()
      cashierDialog:draw()  
     
     fontSize(30)
@@ -229,17 +230,26 @@ function CompleteBuyingProcessScene:touched(touch)
     
     settingsButton:touched(touch)
     homeButton:touched(touch)  
-    nextButton:touched(touch)
+    nextButton2:touched(touch)
     cashierDialog:touched(touch) 
 
-    if (nextButton.selected == true) then
+    if (nextButton2.selected == true) then
         if (currentMoneyValue == currentItemSelectedCost) then
+            sound(SOUND_HIT, 4344)
             cashierDialog:hide()
             Scene.Change("buyingMoreItemsScene")
             end
     end
-    if (nextButton.selected == true) then
+    if (nextButton2.selected == true) then
+        sound(SOUND_HIT, 4344)
+        if (pointsInLevel == 4) then
+        pointsInLevel = 0
+        Scene.Change ("levelScene")
+        end
+    end
+    if (nextButton2.selected == true) then
         if (currentMoneyValue ~= currentItemSelectedCost) then
+            sound(SOUND_HIT, 4344)
             Scene.Change("payingScene")    
             end  
     end
@@ -266,11 +276,6 @@ function draw1()
         cashierDialog:hide()
         wrongCounter = 0
         Scene.Change ("lastClueScene")
-        end
-    
-    if (pointsInLevel == 4) then
-        pointsInLevel = 0
-        Scene.Change ("levelScene")
         end
     
     if (settingsButton.selected == true) then

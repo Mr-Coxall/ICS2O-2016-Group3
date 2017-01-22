@@ -5,11 +5,11 @@
 -- Created for: ICS2O
 -- This is the project for Group #3-2016
 LastClueScene = class()
+
 local shopperMoney = {}
 local itemsToSell = {}
+
 currentMoneyValue = 0
-local touchingCounter = true
-local startTime
 
 local firstThingTheyAreBuying
 local secondThingTheyAreBuying
@@ -30,7 +30,6 @@ function LastClueScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-    startTime = ElapsedTime
     
     cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
     desk = SpriteObject("Dropbox:desk", vec2(WIDTH/2-220, HEIGHT/2-210))
@@ -250,16 +249,16 @@ function LastClueScene:init(x)
         moneyPieceTwo = Button(shopperMoney[(currentLevel-4)*4+4]["item"], vec2(WIDTH/2+200, HEIGHT/2-240))
         moneyPieceThree = Button(shopperMoney[(currentLevel-4)*4+5]["item"], vec2(WIDTH/2+240, HEIGHT/2-100))
         moneyPieceFour = Button(shopperMoney[(currentLevel-4)*4+6]["item"], vec2(WIDTH/2+360, HEIGHT/2-210)) 
-        moneyPieceFive = Button(shopperMoney[(currentLevel-4)*4+3]["item"], vec2(WIDTH/2+300, HEIGHT/2-310))
-        moneyPieceSix =  Button(shopperMoney[(currentLevel-4)*4+2]["item"], vec2(WIDTH/2+330, HEIGHT/2-120))    
+        moneyPieceFive = Button(shopperMoney[(currentLevel-4)*4+2]["item"], vec2(WIDTH/2+300, HEIGHT/2-310))
+        moneyPieceSix =  Button(shopperMoney[(currentLevel-4)*4+3]["item"], vec2(WIDTH/2+330, HEIGHT/2-120))    
         end
     if (currentLevel == 5) then
         moneyPieceOne = Button(shopperMoney[(currentLevel-5)*4+1]["item"], vec2(WIDTH/2+160, HEIGHT/2-160))
         moneyPieceTwo = Button(shopperMoney[(currentLevel-5)*4+4]["item"], vec2(WIDTH/2+200, HEIGHT/2-240))
         moneyPieceThree = Button(shopperMoney[(currentLevel-5)*4+5]["item"], vec2(WIDTH/2+240, HEIGHT/2-100))
-        moneyPieceFour = Button(shopperMoney[(currentLevel-5)*4+6]["item"], vec2(WIDTH/2+300, HEIGHT/2-210))       
-        moneyPieceFive = Button(shopperMoney[(currentLevel-5)*4+3]["item"], vec2(WIDTH/2+330, HEIGHT/2-120))
-        moneyPieceSix = Button(shopperMoney[(currentLevel-5)*4+2]["item"], vec2(WIDTH/2+300, HEIGHT/2-310))
+        moneyPieceFour = Button(shopperMoney[(currentLevel-5)*4+6]["item"], vec2(WIDTH/2+360, HEIGHT/2-210))       
+        moneyPieceFive = Button(shopperMoney[(currentLevel-5)*4+2]["item"], vec2(WIDTH/2+330, HEIGHT/2-120))
+        moneyPieceSix = Button(shopperMoney[(currentLevel-5)*4+3]["item"], vec2(WIDTH/2+300, HEIGHT/2-310))
         end
      if (currentLevel == 1) then
          moneyPieceOneValue = (shopperMoney[(currentLevel-1)*4+1]["cost"])
@@ -284,16 +283,16 @@ function LastClueScene:init(x)
          moneyPieceTwoValue = (shopperMoney[(currentLevel-4)*4+4]["cost"])
          moneyPieceThreeValue = (shopperMoney[(currentLevel-4)*4+5]["cost"])
          moneyPieceFourValue = (shopperMoney[(currentLevel-4)*4+6]["cost"])
-         moneyPieceFiveValue = (shopperMoney[(currentLevel-4)*4+3]["cost"])
-         moneyPieceSixValue = (shopperMoney[(currentLevel-4)*4+2]["cost"])
+         moneyPieceFiveValue = (shopperMoney[(currentLevel-4)*4+2]["cost"])
+         moneyPieceSixValue = (shopperMoney[(currentLevel-4)*4+3]["cost"])
          end
      if (currentLevel == 5) then
          moneyPieceOneValue = (shopperMoney[(currentLevel-5)*4+1]["cost"])
          moneyPieceTwoValue = (shopperMoney[(currentLevel-5)*4+4]["cost"])
          moneyPieceThreeValue = (shopperMoney[(currentLevel-5)*4+5]["cost"])
          moneyPieceFourValue = (shopperMoney[(currentLevel-5)*4+6]["cost"])  
-         moneyPieceFiveValue = (shopperMoney[(currentLevel-5)*4+3]["cost"])
-         moneyPieceSixValue = (shopperMoney[(currentLevel-5)*4+2]["cost"])
+         moneyPieceFiveValue = (shopperMoney[(currentLevel-5)*4+2]["cost"])
+         moneyPieceSixValue = (shopperMoney[(currentLevel-5)*4+3]["cost"])
          end
     firstThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+1]["name"])
     secondThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+2]["name"])
@@ -353,8 +352,16 @@ function LastClueScene:draw()
      moneyPieceTwo:draw()
      moneyPieceThree:draw()
      moneyPieceFour:draw()
-     moneyPieceFive:draw()
-     moneyPieceSix:draw()
+     if (currentLevel == 4) then
+         moneyPieceFive:draw()
+    elseif (currentLevel == 5) then
+         moneyPieceFive:draw()
+         end
+    if (currentLevel == 4) then
+        moneyPieceSix:draw()
+    elseif (currentLevel == 5) then
+        moneyPieceSix:draw()
+        end
     
    if (moneyPieceOne.selected == true) then
         cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue+moneyPieceOneValue, vec2(WIDTH/2-5, HEIGHT/2+150), 300,200)
@@ -372,7 +379,9 @@ function LastClueScene:draw()
         cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue+moneyPieceFourValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
         cashierDialog:setFont("Courier", 30)
         cashierDialog:show()
-    elseif (moneyPieceFive.selected == true) then
+        end
+    if (currentLevel == 4) then
+        if (moneyPieceFive.selected == true) then
         cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue+moneyPieceFiveValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
         cashierDialog:setFont("Courier", 30)
         cashierDialog:show()
@@ -381,17 +390,24 @@ function LastClueScene:draw()
         cashierDialog:setFont("Courier", 30)
         cashierDialog:show()
         end
-     if (undoButton.selected == true) then
-         cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue - currentValueGiven,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
-         cashierDialog:setFont("Courier", 30)
-         cashierDialog:show()
-         end
+    elseif (currentLevel == 5) then
+        if (moneyPieceFive.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue+moneyPieceFiveValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show()
+    elseif (moneyPieceSix.selected == true) then
+        cashierDialog = ShowDialog("You have paid $" .. currentMoneyValue+moneyPieceSixValue,vec2(WIDTH/2-5, HEIGHT/2+150), 200,100)
+        cashierDialog:setFont("Courier", 30)
+        cashierDialog:show()
+        end
+    end
 end
 function LastClueScene:touched(touch)
     -- Codea does not automatically call this method   
        if (undoButton.selected == true) then
-        currentMoneyValue = currentMoneyValue - currentValueGiven
-        end
+           sound(SOUND_HIT, 4344) 
+           currentMoneyValue = currentMoneyValue - currentValueGiven
+           end
     if (moneyPieceOne.selected == true) then
         currentValueGiven = moneyPieceOneValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
@@ -404,13 +420,24 @@ function LastClueScene:touched(touch)
     elseif (moneyPieceFour.selected == true) then
         currentValueGiven = moneyPieceFourValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
-    elseif (moneyPieceFive.selected == true) then
+        end
+    if (currentLevel == 4) then
+        if (moneyPieceFive.selected == true) then
         currentValueGiven = moneyPieceFiveValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
     elseif (moneyPieceSix.selected == true) then
         currentValueGiven = moneyPieceSixValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
         end
+    elseif (currentLevel == 5) then
+        if (moneyPieceFive.selected == true) then
+        currentValueGiven = moneyPieceFiveValue
+        currentMoneyValue = currentMoneyValue + currentValueGiven
+    elseif (moneyPieceSix.selected == true) then
+        currentValueGiven = moneyPieceSixValue
+        currentMoneyValue = currentMoneyValue + currentValueGiven
+        end
+    end
     
     settingsButton:touched(touch)
     homeButton:touched(touch)
@@ -422,8 +449,16 @@ function LastClueScene:touched(touch)
     moneyPieceTwo:touched(touch)
     moneyPieceThree:touched(touch)
     moneyPieceFour:touched(touch)
-    moneyPieceFive:touched(touch)
-    moneyPieceSix:touched(touch)
+    if (currentLevel == 4) then
+        moneyPieceFive:touched(touch)
+    elseif (currentLevel == 5) then
+        moneyPieceFive:touched(touch)
+        end
+    if (currentLevel == 4) then
+        moneyPieceSix:touched(touch)
+    elseif (currentLevel == 5) then
+        moneyPieceSix:touched(touch)
+        end
 
      if (nextButton.selected == true) then
          sound(SOUND_HIT, 4344)

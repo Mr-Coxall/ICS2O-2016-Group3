@@ -6,7 +6,6 @@
 -- This is the project for Group #3-2016
 BuyingScene = class()
 
-startTime = ElapsedTime
 firstThingHasTouched = false
 secondThingHasTouched = false
 thirdThingHasTouched = false

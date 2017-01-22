@@ -11,7 +11,6 @@ local firstThingTheyAreBuying
 local secondThingTheyAreBuying
 local thirdThingTheyAreBuying
 local fourthThingTheyAreBuying
-local startTime
 
 function BuyingMoreItemsScene:init(x)
     -- you can accept and set parameters here
@@ -20,8 +19,6 @@ function BuyingMoreItemsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-    
-    startTime = ElapsedTime
     
     cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
     desk = SpriteObject("Dropbox:desk", vec2(WIDTH/2-220, HEIGHT/2-210))
