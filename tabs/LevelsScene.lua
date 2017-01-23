@@ -96,6 +96,23 @@ function LevelsScene:touched(touch)
     end
     
     if (levelOneButton.selected == true) then
+        currentLevel = 1
+        Scene.Change ("mainGameScene")
+    end
+     if (levelTwoButton.selected == true) then
+        currentLevel = 2
+        Scene.Change ("mainGameScene")
+    end
+     if (levelThreeButton.selected == true) then
+        currentLevel = 3
+        Scene.Change ("mainGameScene")
+    end
+     if (levelFourButton.selected == true) then
+        currentLevel = 4
+        Scene.Change ("mainGameScene")
+    end
+     if (levelFiveButton.selected == true) then
+        currentLevel = 5
         Scene.Change ("mainGameScene")
     end
 end
