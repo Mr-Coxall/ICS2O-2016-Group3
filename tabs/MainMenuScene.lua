@@ -25,16 +25,15 @@ function MainMenuScene:init()
     pushStyle()
     
     if (musicPlaying == false) then
-        music("Game Music One:Toy Land", true, 0.30)
+        music("Game Music One:Toy Land", true, 0.50)
         musicPlaying = true
     end
     
     -- scene setup code here
-    sprite()
     startButton = Button ("Dropbox:startButton", vec2(WIDTH/2,HEIGHT/2))
     settingsButton = Button ("Dropbox:settingsButton", vec2(WIDTH/2, HEIGHT/2-110))
     achievementsButton = Button ("Dropbox:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
-    creditsButton = Button ("Dropbox:creditsButton", vec2(WIDTH/1.1, HEIGHT/11))
+    creditsButton = Button ("Dropbox:creditsButton", vec2(WIDTH/1.2, HEIGHT/11))
 end
 
 function MainMenuScene:draw()
@@ -59,13 +58,30 @@ function MainMenuScene:touched(touch)
     
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
-        sound(SOUND_HIT, 4344)
-    elseif (creditsButton.selected == true) then
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+        
+    if (creditsButton.selected == true) then
         Scene.Change ("creditsScene")
-        sound(SOUND_HIT, 4344)
-    elseif (settingsButton.selected == true) then
+         if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+         end
+    end
+            
+    if (settingsButton.selected == true) then
         Scene.Change ("settingsScene")
-        sound(SOUND_HIT, 4344)
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+    
+    if (achievementsButton.selected == true) then
+        Scene.Change ("achievementsScene")
+        if (soundEffectOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
     end
 end
     

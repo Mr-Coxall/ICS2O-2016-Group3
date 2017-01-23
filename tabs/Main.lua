@@ -15,8 +15,10 @@ DEBUG_GAMECENTER = true
 -- Global variables to the entire project
 currentLevel = 1
 musicPlaying = false
-gender = sprite("Dropbox:girl")
---levelSelected = 
+soundEffectsOn = true
+cashier = ""
+boyCashier = ""
+girlCashier = ""
 
 -- local variables to this scene
 
@@ -39,7 +41,9 @@ function setup()
       Scene("achievementsScene", AchievementsScene)
       Scene("creditsScene", CreditsScene)
       Scene("mainGame", MainGame)
-      Scene ("levelScene", LevelsScene)
+      Scene("levelScene", LevelsScene)
+      Scene("resetScene", ResetScene)
+    
     		      
       Scene.Change("companyLogoScene")
 end

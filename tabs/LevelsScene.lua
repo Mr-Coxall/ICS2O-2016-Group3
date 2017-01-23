@@ -10,7 +10,7 @@
 LevelsScene = class()
 
 -- local variables in this scene
-local levelsBackButton 
+local levelsHomeButton 
 local levelsSettingsButton
 local levelOneButton
 local levelTwoButton
@@ -26,12 +26,10 @@ function LevelsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle()
-    
-    print ("Levels")
 
     -- scene setup code here
 
-    levelsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
+    levelsHomeButton = Button ("Dropbox:levelsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))
     levelOneButton = Button ("Dropbox:levelOneButton", vec2(WIDTH/2-250,HEIGHT/2+60))
     levelTwoButton = Button ("Dropbox:levelTwoButton", vec2(WIDTH/2, HEIGHT/2+60))
@@ -60,7 +58,7 @@ function LevelsScene:draw()
     -- This sets the line thickness
     strokeWidth(5)
     
-    levelsBackButton:draw()   
+    levelsHomeButton:draw()   
     levelsSettingsButton:draw()
     levelOneButton:draw()
     levelTwoButton:draw()
@@ -79,7 +77,7 @@ end
 
 function LevelsScene:touched(touch)
     -- Codea does not automatically call this method
-    levelsBackButton:touched(touch)
+    levelsHomeButton:touched(touch)
     levelsSettingsButton:touched(touch)
     levelOneButton:touched(touch)
     levelTwoButton:touched(touch)
@@ -87,12 +85,17 @@ function LevelsScene:touched(touch)
     levelFourButton:touched(touch)
     levelFiveButton:touched(touch)
         
-     if (levelsBackButton.selected == true) then
+     if (levelsHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")
-        sound(SOUND_HIT, 4344)
-     elseif (levelsSettingsButton.selected == true) then
-        Scene.Change ("settingsScene")
-        sound(SOUND_HIT, 4344)
-    
-end
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
     end
+            
+    if (levelsSettingsButton.selected == true) then
+        Scene.Change ("settingsScene")
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+end

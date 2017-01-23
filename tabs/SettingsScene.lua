@@ -11,7 +11,7 @@ SettingsScene = class()
 
 -- local variables to this scene
 
-local settingsBackButton
+local settingsHomeButton
 local offMusicButton
 local onMusicButton
 local offSoundEffectsButton
@@ -30,10 +30,9 @@ function SettingsScene:init(x)
     noStroke()
     pushStyle()
 
-    print ("Settings")
 -- scene setup code here
 
-    settingsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
+    settingsHomeButton = Button ("Dropbox:settingsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
     offMusicButton = Button ("Dropbox:offMusicButton", vec2(WIDTH/2-350,HEIGHT/2+100))
     onMusicButton = Button ("Dropbox:onMusicButton", vec2(WIDTH/2-190, HEIGHT/2+100))
     offSoundEffectsButton = Button ("Dropbox:offSoundEffectsButton", vec2(WIDTH/2-350, HEIGHT/2-150))
@@ -60,7 +59,7 @@ function SettingsScene:draw()
     -- print text to screen
     text("SETTINGS", WIDTH/2, HEIGHT/1.11)
     
-    settingsBackButton:draw()
+    settingsHomeButton:draw()
     offMusicButton:draw()
     onMusicButton:draw()
     offSoundEffectsButton:draw()
@@ -80,7 +79,7 @@ end
 
 function SettingsScene:touched(touch)
     -- Codea does not automatically call this method
-    settingsBackButton:touched(touch)
+    settingsHomeButton:touched(touch)
     offMusicButton:touched(touch)
     onMusicButton:touched(touch)
     offSoundEffectsButton:touched(touch)
@@ -89,16 +88,34 @@ function SettingsScene:touched(touch)
     girlButton:touched(touch)
     boyButton:touched(touch)
     
-    if (settingsBackButton.selected == true) then
+    if (settingsHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")
-        sound(SOUND_HIT, 4344)
-    elseif (offMusicButton.selected == true) then
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+        
+    if (offMusicButton.selected == true) then
         music.stop()
     elseif (onMusicButton.selected == true) then
         music("Game Music One:Toy Land", 0.30)
-        
-        
+    end
+    
+    if (offSoundEffectsButton.selected == true) then
+        soundEffectsOn = false
+    end
+    
+    if(onSoundEffectsButton.selected == true) then
+        soundEffectsOn = true
+    end
+    
+    if (resetButton.selected == true) then
+        Scene.Change ("resetScene")
+    end
             
-            
-        end
+    if (girlButton.selected == true) then
+        cashier = girlCashier
+    elseif (boyButton.selected == trye) then
+            cashier = boyCashier
+    end
 end
