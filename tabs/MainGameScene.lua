@@ -8,12 +8,12 @@ MainGameScene = class()
 
 pointsInLevel = 0
 
-local itemsToSell = {}
+itemsToSell = {}
 
-local firstThingTheyAreBuying
-local secondThingTheyAreBuying
-local thirdThingTheyAreBuying
-local fourthThingTheyAreBuying
+firstThingTheyAreBuying = ""
+secondThingTheyAreBuying = ""
+thirdThingTheyAreBuying = ""
+fourthThingTheyAreBuying = ""
 
 -- Use this function to perform your initial setup
 function MainGameScene:init(x)
@@ -25,7 +25,7 @@ function MainGameScene:init(x)
     noSmooth()
     noStroke()
     pushStyle() 
-    sprite("Dropbox:homeButton") 
+    sprite("Dropbox:Blue Back Circle Button") 
     
     --if (cashier == girlCashier) then
     cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
@@ -34,19 +34,19 @@ function MainGameScene:init(x)
          --end
     desk = SpriteObject("Dropbox:desk", vec2(WIDTH/2-220, HEIGHT/2-210))
     basket = SpriteObject("Dropbox:basket", vec2(WIDTH/2-220, HEIGHT/2-220))
-    homeButton = Button("Dropbox:homeButton", vec2(WIDTH/2-450, HEIGHT/2+320))
     settingsButton = Button("Dropbox:Blue Settings Button", vec2(WIDTH/2-340, HEIGHT/2+320))
     nextButton = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
+    levelsButton = Button ("Dropbox:Blue Level Menu Button", vec2(WIDTH/2-450, HEIGHT/2+320))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
     pencil["cost"] = 0.35
     pencil["name"] = "pencil" 
     table.insert(itemsToSell, pencil)
-     
+    
     car = {}
     car["item"] = "Dropbox:car"
-    car["cost"] = 0.15
+    car["cost"] = 0.20
     car["name"] = "car"
      
     table.insert(itemsToSell, car)
@@ -116,7 +116,7 @@ function MainGameScene:init(x)
     
     angel = {}
     angel["item"] = "Dropbox:angel"
-    angel["cost"] = 2.40
+    angel["cost"] = 2.35
     angel["name"] = "angel"
   
     table.insert(itemsToSell, angel)
@@ -209,7 +209,7 @@ function MainGameScene:draw()
     text ("Level " .. currentLevel , WIDTH/2+390, HEIGHT/2+350)
     fontSize(30)
     text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT/2-340)
-    text("NEXT", WIDTH-73, HEIGHT-752)
+    text("NEXT", WIDTH/2+435, HEIGHT/6-111)
 
     sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
     sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
@@ -233,16 +233,18 @@ function MainGameScene:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
      settingsButton:draw()
-     homeButton:draw()
+     
+     levelsButton:draw()
      nextButton:draw()
      cashierDialog:draw()
-    end
+end
 function MainGameScene:touched(touch)
     -- Codea does not automatically call this method  
     
     settingsButton:touched(touch)
-    homeButton:touched(touch)
+    
     nextButton:touched(touch)
+    levelsButton:touched(touch)
     cashierDialog:touched(touch)  
      
     if (nextButton.selected == true) then
@@ -254,8 +256,8 @@ function MainGameScene:touched(touch)
         sound(SOUND_HIT, 4344)
         Scene.Change ("settingsScene")
     end
-    if (homeButton.selected == true) then
+    if (levelsButton.selected == true) then
         sound(SOUND_HIT, 4344)
-        Scene.Change ("mainMenuScene")
+        Scene.Change ("levelScene")
     end
  end

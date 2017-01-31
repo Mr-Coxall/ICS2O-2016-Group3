@@ -26,10 +26,6 @@ function LevelsScene:init(x)
     noSmooth()
     noStroke()
     pushStyle()
-    
-    print ("Levels")
-
-    -- scene setup code here
 
     levelsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))

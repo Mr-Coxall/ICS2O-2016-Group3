@@ -6,22 +6,17 @@
 -- This is the project for Group #3-2016
 PayingScene = class()
 
-local shopperMoney = {}
-local itemsToSell = {}
+shopperMoney = {}
 currentMoneyValue = 0
 
-local firstThingTheyAreBuying
-local secondThingTheyAreBuying
-local thirdThingTheyAreBuying
-local fourthThingTheyAreBuying
 local currentValueGiven
 
-local moneyPieceOne
-local moneyPieceTwo
-local moneyPieceThree
-local moneyPieceFour
-local moneyPieceFive
-local moneyPieceSix
+moneyPieceOne = ""
+moneyPieceTwo = ""
+moneyPieceThree = ""
+moneyPieceFour = ""
+moneyPieceFive = ""
+moneyPieceSix = ""
 
 function PayingScene:init(x)
     -- you can accept and set parameters here
@@ -32,145 +27,6 @@ function PayingScene:init(x)
     pushStyle()  
     
     undoButton = Button("Dropbox:Blue Redo Button", vec2(WIDTH/2-65, HEIGHT/2-15))
-    
-    pencil = {}
-    pencil["item"] = "Dropbox:pencil"
-    pencil["cost"] = 0.35
-    pencil["name"] = "pencil" 
-    table.insert(itemsToSell, pencil)
-     
-    car = {}
-    car["item"] = "Dropbox:car"
-    car["cost"] = 0.15
-    car["name"] = "car"
-     
-    table.insert(itemsToSell, car)
-    
-    present = {}
-    present["item"] = "Dropbox:present"
-    present["cost"] = 0.30
-    present["name"] = "present"
-
-    table.insert(itemsToSell, present)
-    
-    basketball = {}
-    basketball["item"] = "Dropbox:basketball"
-    basketball["cost"] = 1.25
-    basketball["name"] = "basketball"
-      
-    table.insert(itemsToSell, basketball)
-    
-    football = {}
-    football["item"] = "Dropbox:football"
-    football["cost"] = 2.10
-    football["name"] = "football"
-   
-    table.insert(itemsToSell, football)
-    
-    kitten = {}
-    kitten["item"] = "Dropbox:kitten"
-    kitten["cost"] = 6.00
-    kitten["name"] = "kitten"
-   
-    table.insert(itemsToSell, kitten)
-    
-    glasses = {}
-    glasses["item"] = "Dropbox:glasses"
-    glasses["cost"] = 8.15
-    glasses["name"] = "glasses"
- 
-    table.insert(itemsToSell, glasses)
-    
-    teddyBear = {}
-    teddyBear["item"] = "Dropbox:teddyBear"
-    teddyBear["cost"] = 3.00
-    teddyBear["name"] = "teddybear"
-   
-    table.insert(itemsToSell, teddyBear)
-    
-    diaper = {}
-    diaper["item"] = "Dropbox:diaper"
-    diaper["cost"] = 3.50
-    diaper["name"] = "diaper"
-   
-    table.insert(itemsToSell, diaper)  
-    
-    ball = {}
-    ball["item"] = "Dropbox:ball"
-    ball["cost"] = 4.10
-    ball["name"] = "ball"
-    
-    table.insert(itemsToSell, ball)  
-    
-    book = {}
-    book["item"] = "Dropbox:book"
-    book["cost"] = 5.25
-    book["name"] = "book"
-  
-    table.insert(itemsToSell, book)
-    
-    angel = {}
-    angel["item"] = "Dropbox:angel"
-    angel["cost"] = 2.40
-    angel["name"] = "angel"
-  
-    table.insert(itemsToSell, angel)
-      
-    trophy = {}
-    trophy["item"] = "Dropbox:trophy"
-    trophy["cost"] = 10.00
-    trophy["name"] = "trophy"
-   
-    table.insert(itemsToSell, trophy)  
- 
-    babyWipes = {}
-    babyWipes["item"] = "Dropbox:babyWipes"
-    babyWipes["cost"] = 12.05
-    babyWipes["name"] = "baby wipes"
-   
-    table.insert(itemsToSell, babyWipes)  
-    
-    babySoap = {}
-    babySoap["item"] = "Dropbox:babySoap"
-    babySoap["cost"] = 12.35
-    babySoap["name"] = "baby soap"
-   
-    table.insert(itemsToSell, babySoap)  
-    
-    hairbrush = {}
-    hairbrush["item"] = "Dropbox:hairbrush"
-    hairbrush["cost"] = 13.00
-    hairbrush["name"] = "hairbrush"
-   
-    table.insert(itemsToSell, hairbrush)  
-    
-    babyBottle = {}
-    babyBottle["item"] = "Dropbox:babyBottle"
-    babyBottle["cost"] = 14.25
-    babyBottle["name"] = "baby bottle"
-   
-    table.insert(itemsToSell, babyBottle)  
-    
-    sunscreen = {}
-    sunscreen["item"] = "Dropbox:sunscreen"
-    sunscreen["cost"] = 15.85
-    sunscreen["name"] = "sunscreen"
-   
-    table.insert(itemsToSell, sunscreen)  
-    
-    shoes = {}
-    shoes["item"] = "Dropbox:shoes"
-    shoes["cost"] = 16.30
-    shoes["name"] = "shoes"
-   
-    table.insert(itemsToSell, shoes)  
-    
-    babyDoll = {}
-    babyDoll["item"] = "Dropbox:babyDoll"
-    babyDoll["cost"] = 19.80
-    babyDoll["name"] = "baby doll"
-   
-    table.insert(itemsToSell, babyDoll)   
     
     fiveCent = {}
     fiveCent["item"] = "Dropbox:fiveCent"
@@ -207,21 +63,7 @@ function PayingScene:init(x)
     FiveDollarBill["cost"] = 5.00
     
     table.insert(shopperMoney, FiveDollarBill)
-    
-    firstThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+20, HEIGHT/2+120))
-    firstThingTheyAreBuying.draggable = true
-    secondThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+135, HEIGHT/2+120))
-    secondThingTheyAreBuying.draggable = true
-    thirdThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+3]["item"], vec2(WIDTH/2+270, HEIGHT/2+120))
-    thirdThingTheyAreBuying.draggable = true
-    fourthThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+4]["item"], vec2(WIDTH/2+424, HEIGHT/2+120))
-    fourthThingTheyAreBuying.draggable = true
-    
-    firstThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+1]["cost"])
-    secondThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+2]["cost"])
-    thirdThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+3]["cost"])
-    fourthThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+4]["cost"])
-    
+  
     if (currentLevel == 1) then
         moneyPieceOne = Button(shopperMoney[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+160, HEIGHT/2-160))
         moneyPieceTwo = Button(shopperMoney[(currentLevel-1)*4+2]["item"], vec2(WIDTH/2+200, HEIGHT/2-240))
@@ -311,7 +153,8 @@ function PayingScene:draw()
     
     text ("Level " .. currentLevel , WIDTH/2+390, HEIGHT/2+350)
     fontSize(30)
-    text("NEXT", WIDTH-73, HEIGHT-752)
+    text("NEXT", WIDTH/2+435, HEIGHT/6-111)
+    text("BACK", WIDTH/2-435,HEIGHT/6-111)
 
     sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
     sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
@@ -335,8 +178,10 @@ function PayingScene:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
      settingsButton:draw()
-     homeButton:draw()
+     
      nextButton:draw()
+     backButton:draw()
+     levelsButton:draw()
      sprite("Dropbox:hand", WIDTH/2+260, HEIGHT-500)
      cashierDialog:draw()
     
@@ -348,6 +193,7 @@ function PayingScene:draw()
      moneyPieceTwo:draw()
      moneyPieceThree:draw()
      moneyPieceFour:draw()
+    
      if (currentLevel == 4) then
          moneyPieceFive:draw()
     elseif (currentLevel == 5) then
@@ -407,7 +253,8 @@ function PayingScene:draw()
      end
 end
 function PayingScene:touched(touch)
-    -- Codea does not automatically call this method   
+    -- Codea does not automatically call this method    
+    
     if (undoButton.selected == true) then
         sound(SOUND_HIT, 4344)
         currentMoneyValue = currentMoneyValue - currentValueGiven
@@ -418,6 +265,7 @@ function PayingScene:touched(touch)
     elseif (moneyPieceTwo.selected == true) then
         currentValueGiven = moneyPieceTwoValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
+        currentValueGiven = 0
     elseif (moneyPieceThree.selected == true) then
         currentValueGiven = moneyPieceThreeValue
         currentMoneyValue = currentMoneyValue + currentValueGiven
@@ -444,8 +292,10 @@ function PayingScene:touched(touch)
     end
         
     settingsButton:touched(touch)
-    homeButton:touched(touch)
+    
     nextButton:touched(touch)
+    levelsButton:touched(touch)
+    backButton:touched(touch)
     cashierDialog:touched(touch) 
     
     moneyPieceOne:touched(touch)
@@ -471,10 +321,37 @@ function PayingScene:touched(touch)
         end
     if (settingsButton.selected == true) then
         sound(SOUND_HIT, 4344)
+        currentItemSelected = ""
+        currentItemSelectedName = ""
+        currentItemSelectedCost = 0
+        firstThingHasTouched = false
+        secondThingHasTouched = false
+        thirdThingHasTouched = false
+        fourthThingHasTouched = false
+        pointsInLevel = 0
         Scene.Change ("settingsScene")
     end
-    if (homeButton.selected == true) then
+    if (levelsButton.selected == true) then
         sound(SOUND_HIT, 4344)
-        Scene.Change ("mainMenuScene") 
+        currentItemSelected = ""
+        currentItemSelectedName = ""
+        currentItemSelectedCost = 0
+        firstThingHasTouched = false
+        secondThingHasTouched = false
+        thirdThingHasTouched = false
+        fourthThingHasTouched = false
+        pointsInLevel = 0
+        Scene.Change ("levelScene")
+    end
+    if (backButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+        currentItemSelected = ""
+        currentItemSelectedName = ""
+        currentItemSelectedCost = 0
+        firstThingHasTouched = false
+        secondThingHasTouched = false
+        thirdThingHasTouched = false
+        fourthThingHasTouched = false
+        Scene.Change ("buyingScene")
     end
 end
