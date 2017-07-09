@@ -10,6 +10,7 @@
 LevelsScene = class()
 
 -- local variables in this scene
+local levelsHomeButton 
 local levelsBackButton 
 local levelsSettingsButton
 local levelOneButton
@@ -27,6 +28,9 @@ function LevelsScene:init(x)
     noStroke()
     pushStyle()
 
+    -- scene setup code here
+
+    levelsHomeButton = Button ("Dropbox:levelsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))
     levelOneButton = Button ("Dropbox:levelOneButton", vec2(WIDTH/2-250,HEIGHT/2+60))
@@ -56,6 +60,7 @@ function LevelsScene:draw()
     -- This sets the line thickness
     strokeWidth(5)
     
+    levelsHomeButton:draw()   
     levelsBackButton:draw()   
     levelsSettingsButton:draw()
     levelOneButton:draw()
@@ -75,6 +80,7 @@ end
 
 function LevelsScene:touched(touch)
     -- Codea does not automatically call this method
+    levelsHomeButton:touched(touch)
     levelsBackButton:touched(touch)
     levelsSettingsButton:touched(touch)
     levelOneButton:touched(touch)
@@ -83,7 +89,7 @@ function LevelsScene:touched(touch)
     levelFourButton:touched(touch)
     levelFiveButton:touched(touch)
         
-     if (levelsBackButton.selected == true) then
+     if (levelsHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")
         sound(SOUND_HIT, 4344)
      elseif (levelsSettingsButton.selected == true) then

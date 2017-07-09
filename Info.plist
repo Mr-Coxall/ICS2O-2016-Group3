@@ -19,6 +19,8 @@
 		<string>BuyingMoreItemsScene</string>
 		<string>ShowDialog</string>
 		<string>SettingsScene</string>
+		<string>ResetScene</string>
+		<string>CreditsScene</string>
 		<string>TransitionScreen</string>
 		<string>AchievementsScene</string>
 		<string>CreditsScene</string>

@@ -11,6 +11,7 @@ SettingsScene = class()
 
 -- local variables to this scene
 
+local settingsHomeButton
 local settingsBackButton
 local offMusicButton
 local onMusicButton
@@ -30,9 +31,9 @@ function SettingsScene:init(x)
     noStroke()
     pushStyle()
 
-    print ("Settings")
 -- scene setup code here
 
+    settingsHomeButton = Button ("Dropbox:settingsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
     settingsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
     offMusicButton = Button ("Dropbox:offMusicButton", vec2(WIDTH/2-350,HEIGHT/2+100))
     onMusicButton = Button ("Dropbox:onMusicButton", vec2(WIDTH/2-190, HEIGHT/2+100))
@@ -60,6 +61,7 @@ function SettingsScene:draw()
     -- print text to screen
     text("SETTINGS", WIDTH/2, HEIGHT/1.11)
     
+    settingsHomeButton:draw()
     settingsBackButton:draw()
     offMusicButton:draw()
     onMusicButton:draw()
@@ -80,6 +82,7 @@ end
 
 function SettingsScene:touched(touch)
     -- Codea does not automatically call this method
+    settingsHomeButton:touched(touch)
     settingsBackButton:touched(touch)
     offMusicButton:touched(touch)
     onMusicButton:touched(touch)
@@ -89,6 +92,37 @@ function SettingsScene:touched(touch)
     girlButton:touched(touch)
     boyButton:touched(touch)
     
+    if (settingsHomeButton.selected == true) then
+        Scene.Change ("mainMenuScene")
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+        
+    if (offMusicButton.selected == true) then
+        music.stop()
+    elseif (onMusicButton.selected == true) then
+        music("Game Music One:Toy Land", 0.30)
+    end
+    
+    if (offSoundEffectsButton.selected == true) then
+        soundEffectsOn = false
+    end
+    
+    if(onSoundEffectsButton.selected == true) then
+        soundEffectsOn = true
+    end
+    
+    if (resetButton.selected == true) then
+        Scene.Change ("resetScene")
+    end
+            
+    if (girlButton.selected == true) then
+        cashier = girlCashier
+    elseif (boyButton.selected == trye) then
+            cashier = boyCashier
+    end
+
     if (settingsBackButton.selected == true) then
         Scene.Change ("mainMenuScene")
         sound(SOUND_HIT, 4344)
@@ -96,5 +130,5 @@ function SettingsScene:touched(touch)
         music.stop()
     elseif (onMusicButton.selected == true) then
         music("Game Music One:Toy Land", 0.30)         
-        end
+    end
 end

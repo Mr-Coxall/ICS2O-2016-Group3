@@ -58,12 +58,29 @@ function MainMenuScene:touched(touch)
     
     if (startButton.selected == true) then
         Scene.Change ("levelScene")
-        sound(SOUND_HIT, 4344)
-    elseif (creditsButton.selected == true) then
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+        
+    if (creditsButton.selected == true) then
         Scene.Change ("creditsScene")
-        sound(SOUND_HIT, 4344)
-    elseif (settingsButton.selected == true) then
+         if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+         end
+    end
+            
+    if (settingsButton.selected == true) then
         Scene.Change ("settingsScene")
-        sound(SOUND_HIT, 4344)
+        if (soundEffectsOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
+    end
+    
+    if (achievementsButton.selected == true) then
+        Scene.Change ("achievementsScene")
+        if (soundEffectOn == true) then
+            sound(SOUND_HIT, 4344)
+        end
     end
 end
