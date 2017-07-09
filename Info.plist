@@ -11,12 +11,19 @@
 		<string>GameLogoScene</string>
 		<string>MainMenuScene</string>
 		<string>LevelsScene</string>
+		<string>MainGameScene</string>
+		<string>BuyingScene</string>
+		<string>PayingScene</string>
+		<string>CompleteBuyingProcessScene</string>
+		<string>LastClueScene</string>
+		<string>BuyingMoreItemsScene</string>
+		<string>ShowDialog</string>
 		<string>SettingsScene</string>
 		<string>ResetScene</string>
 		<string>CreditsScene</string>
 		<string>TransitionScreen</string>
 		<string>AchievementsScene</string>
-		<string>MainGame</string>
+		<string>CreditsScene</string>
 		<string>HelperClass</string>
 	</array>
 	<key>Description</key>

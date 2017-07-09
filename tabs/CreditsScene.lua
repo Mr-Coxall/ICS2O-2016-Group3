@@ -52,14 +52,12 @@ function CreditsScene:draw()
         text ("Sidney", WIDTH/2, HEIGHT/3)
         text ("Marianna", WIDTH/2, HEIGHT/3.7)
         text ("Shuvaethy", WIDTH/2, HEIGHT/4.8)
-    backToHomeButton:draw()
 end
 
 function CreditsScene:touched(touch)
     -- Codea does not automatically call this method
    
     -- This sets a dark background color
-    backToHomeButton:touched(touch)
     
     if (backToHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")

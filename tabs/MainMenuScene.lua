@@ -25,7 +25,7 @@ function MainMenuScene:init()
     pushStyle()
     
     if (musicPlaying == false) then
-        music("Game Music One:Toy Land", true, 0.50)
+        music("Game Music One:Toy Land", true, 0.30)
         musicPlaying = true
     end
     
@@ -33,7 +33,7 @@ function MainMenuScene:init()
     startButton = Button ("Dropbox:startButton", vec2(WIDTH/2,HEIGHT/2))
     settingsButton = Button ("Dropbox:settingsButton", vec2(WIDTH/2, HEIGHT/2-110))
     achievementsButton = Button ("Dropbox:achievementsButton", vec2(WIDTH/2, HEIGHT/5))
-    creditsButton = Button ("Dropbox:creditsButton", vec2(WIDTH/1.2, HEIGHT/11))
+    creditsButton = Button ("Dropbox:creditsButton", vec2(WIDTH/1.1, HEIGHT/11))
 end
 
 function MainMenuScene:draw()
@@ -84,6 +84,3 @@ function MainMenuScene:touched(touch)
         end
     end
 end
-    
-    
-    -- Codea does not automatically call this method

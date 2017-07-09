@@ -20,6 +20,7 @@ cashier = ""
 boyCashier = ""
 girlCashier = ""
 
+
 -- local variables to this scene
 
 
@@ -38,13 +39,15 @@ function setup()
       Scene("gameLogoScene", GameLogoScene)
       Scene("mainMenuScene", MainMenuScene)
       Scene("settingsScene", SettingsScene)
-      Scene("achievementsScene", AchievementsScene)
+      Scene ("levelScene", LevelsScene)
       Scene("creditsScene", CreditsScene)
-      Scene("mainGame", MainGame)
-      Scene("levelScene", LevelsScene)
-      Scene("resetScene", ResetScene)
-    
-    		      
+      Scene("mainGameScene", MainGameScene)
+      Scene("completeBuyingProcessScene", CompleteBuyingProcessScene)
+      Scene("buyingMoreItemsScene", BuyingMoreItemsScene)
+      Scene("lastClueScene", LastClueScene)
+      Scene("buyingScene", BuyingScene)
+      Scene("payingScene", PayingScene)
+    		     
       Scene.Change("companyLogoScene")
 end
 

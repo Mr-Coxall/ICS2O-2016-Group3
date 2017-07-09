@@ -1,5 +1,5 @@
 -- ICS2O-2016-Group3
---LevelsScene
+-- LevelsScene
 
 --Created by: Shuvaethy Neill
 -- Created on: Dec-2016
@@ -11,6 +11,7 @@ LevelsScene = class()
 
 -- local variables in this scene
 local levelsHomeButton 
+local levelsBackButton 
 local levelsSettingsButton
 local levelOneButton
 local levelTwoButton
@@ -30,6 +31,7 @@ function LevelsScene:init(x)
     -- scene setup code here
 
     levelsHomeButton = Button ("Dropbox:levelsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
+    levelsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))
     levelOneButton = Button ("Dropbox:levelOneButton", vec2(WIDTH/2-250,HEIGHT/2+60))
     levelTwoButton = Button ("Dropbox:levelTwoButton", vec2(WIDTH/2, HEIGHT/2+60))
@@ -59,6 +61,7 @@ function LevelsScene:draw()
     strokeWidth(5)
     
     levelsHomeButton:draw()   
+    levelsBackButton:draw()   
     levelsSettingsButton:draw()
     levelOneButton:draw()
     levelTwoButton:draw()
@@ -78,6 +81,7 @@ end
 function LevelsScene:touched(touch)
     -- Codea does not automatically call this method
     levelsHomeButton:touched(touch)
+    levelsBackButton:touched(touch)
     levelsSettingsButton:touched(touch)
     levelOneButton:touched(touch)
     levelTwoButton:touched(touch)
@@ -87,15 +91,30 @@ function LevelsScene:touched(touch)
         
      if (levelsHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")
-        if (soundEffectsOn == true) then
-            sound(SOUND_HIT, 4344)
-        end
-    end
-            
-    if (levelsSettingsButton.selected == true) then
+        sound(SOUND_HIT, 4344)
+     elseif (levelsSettingsButton.selected == true) then
         Scene.Change ("settingsScene")
-        if (soundEffectsOn == true) then
-            sound(SOUND_HIT, 4344)
-        end
+        sound(SOUND_HIT, 4344)
+    end
+    
+    if (levelOneButton.selected == true) then
+        currentLevel = 1
+        Scene.Change ("mainGameScene")
+    end
+     if (levelTwoButton.selected == true) then
+        currentLevel = 2
+        Scene.Change ("mainGameScene")
+    end
+     if (levelThreeButton.selected == true) then
+        currentLevel = 3
+        Scene.Change ("mainGameScene")
+    end
+     if (levelFourButton.selected == true) then
+        currentLevel = 4
+        Scene.Change ("mainGameScene")
+    end
+     if (levelFiveButton.selected == true) then
+        currentLevel = 5
+        Scene.Change ("mainGameScene")
     end
 end
