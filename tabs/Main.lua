@@ -14,9 +14,10 @@ DEBUG_GAMECENTER = true
 
 -- Global variables to the entire project
 currentLevel = 1
+pointsInLevel = 0
 musicPlaying = false
 soundEffectsOn = true
-cashier = ""
+cashier = "girl"
 boyCashier = ""
 girlCashier = ""
 
@@ -28,7 +29,7 @@ girlCashier = ""
 function setup()
     -- set up display options
     supportedOrientations(LANDSCAPE_ANY)
-    displayMode(FULLSCREEN)
+    displayMode(FULLSCREEN_NO_BUTTONS)
     noFill()
     noSmooth()
     noStroke()

@@ -8,11 +8,12 @@ BuyingMoreItemsScene = class()
 
 function BuyingMoreItemsScene:init(x)
     -- you can accept and set parameters here
-    displayMode(FULLSCREEN)
+    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
     pushStyle() 
+    speech.stop()
 
     yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+20, HEIGHT/2+100))
     noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2+100))
@@ -21,6 +22,7 @@ function BuyingMoreItemsScene:init(x)
     sceneDialog:setFont("Courier", 25)
     sceneDialog:show()   
 end
+
 function BuyingMoreItemsScene:draw()
     -- Codea does not automatically call this method
     background(40, 40, 50)
@@ -42,20 +44,20 @@ function BuyingMoreItemsScene:draw()
     sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20) 
     
     fontSize(15)
-    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
-    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+155, HEIGHT/2-20)
-    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+289, HEIGHT/2-20)
-    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+424, HEIGHT/2-20)  
-    
-     cashier:draw()
+    text (string.format("$%.2f", firstThingTheyAreBuyingCost), WIDTH/2+20, HEIGHT/2-20)
+    text (string.format("$%.2f", secondThingTheyAreBuyingCost), WIDTH/2+155, HEIGHT/2-20)
+    text (string.format("$%.2f", thirdThingTheyAreBuyingCost), WIDTH/2+289, HEIGHT/2-20)
+    text (string.format("$%.2f", fourthThingTheyAreBuyingCost), WIDTH/2+424, HEIGHT/2-20)  
+       
+     theCashier:draw()
      desk:draw()
      basket:draw()
      firstThingTheyAreBuying:draw()
      secondThingTheyAreBuying:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
-     settingsButton:draw()
-     levelsButton:draw()
+     --settingsButton:draw()
+     --levelsButton:draw()
        
      sceneDialog:draw()
      yesBox:draw()
@@ -66,10 +68,11 @@ function BuyingMoreItemsScene:draw()
     text ("YES", WIDTH/2+20, HEIGHT/2+100)
     popStyle()    
 end 
+
 function BuyingMoreItemsScene:touched(touch)
     -- Codea does not automatically call this method 
-     sceneDialog:touched(touch)
-     levelsButton:touched(touch)
+    sceneDialog:touched(touch)
+     --levelsButton:touched(touch)
      yesBox:touched(touch)
      noBox:touched(touch)
     
@@ -94,9 +97,10 @@ function BuyingMoreItemsScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
-        pointsInLevel = 0
+        --pointsInLevel = 0
         Scene.Change ("levelScene")
-        end
+    end
+    --[[
     if (settingsButton.selected == true) then
         sound(SOUND_HIT, 4344)
         currentItemSelected = ""
@@ -121,4 +125,5 @@ function BuyingMoreItemsScene:touched(touch)
         pointsInLevel = 0
         Scene.Change ("levelScene")
     end
+    --]]
 end

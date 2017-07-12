@@ -20,7 +20,7 @@ local levelFourButton
 local levelFiveButton
 
 -- Use this function to perform your initial setup for this scene
-function LevelsScene:init(x)
+function LevelsScene:init()
     -- setup display options
     supportedOrientations(LANDSCAPE_ANY)
     noFill()
@@ -29,10 +29,12 @@ function LevelsScene:init(x)
     pushStyle()
 
     -- scene setup code here
+    
+    speech.stop()
 
     levelsHomeButton = Button ("Dropbox:levelsHomeButton", vec2(WIDTH/2-450,HEIGHT/2+320))
     levelsBackButton = Button ("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-450,HEIGHT/2+320))
-    levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))
+    --levelsSettingsButton = Button ("Dropbox:Blue Settings Button", vec2(WIDTH/2+450, HEIGHT/2+320))
     levelOneButton = Button ("Dropbox:levelOneButton", vec2(WIDTH/2-250,HEIGHT/2+60))
     levelTwoButton = Button ("Dropbox:levelTwoButton", vec2(WIDTH/2, HEIGHT/2+60))
     levelThreeButton = Button ("Dropbox:levelThreeButton", vec2(WIDTH/2+250, HEIGHT/2+60))
@@ -50,11 +52,11 @@ function LevelsScene:draw()
     
     --sets the drawing parameters
     fill(0, 0, 0, 255)
-    fontSize(100)
+    fontSize(75)
     font("AmericanTypewriter")
     
     -- print text to screen
-    text("LEVELS", WIDTH/2, HEIGHT/1.11)
+    text("Levels", WIDTH/2, HEIGHT/1.11)
     
     
     -- This sets the line thickness
@@ -62,7 +64,7 @@ function LevelsScene:draw()
     
     levelsHomeButton:draw()   
     levelsBackButton:draw()   
-    levelsSettingsButton:draw()
+    --levelsSettingsButton:draw()
     levelOneButton:draw()
     levelTwoButton:draw()
     levelThreeButton:draw()
@@ -82,19 +84,19 @@ function LevelsScene:touched(touch)
     -- Codea does not automatically call this method
     levelsHomeButton:touched(touch)
     levelsBackButton:touched(touch)
-    levelsSettingsButton:touched(touch)
+    --levelsSettingsButton:touched(touch)
     levelOneButton:touched(touch)
     levelTwoButton:touched(touch)
     levelThreeButton:touched(touch)
     levelFourButton:touched(touch)
     levelFiveButton:touched(touch)
         
-     if (levelsHomeButton.selected == true) then
+    if (levelsHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")
         sound(SOUND_HIT, 4344)
-     elseif (levelsSettingsButton.selected == true) then
-        Scene.Change ("settingsScene")
-        sound(SOUND_HIT, 4344)
+     --elseif (levelsSettingsButton.selected == true) then
+        --Scene.Change ("settingsScene")
+        --sound(SOUND_HIT, 4344)
     end
     
     if (levelOneButton.selected == true) then

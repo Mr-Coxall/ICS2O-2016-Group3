@@ -11,15 +11,18 @@ secondThingHasTouched = false
 thirdThingHasTouched = false
 fourthThingHasTouched = false
 currentItemSelected = ""
+sayCostOfItem = false
 
 function BuyingScene:init()
     -- you can accept and set parameters here
     
-    displayMode(FULLSCREEN)
+    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
     pushStyle() 
+    speech.stop()
+    sayCostOfItem = false
     
     yesBox = Button("Cargo Bot:Condition Green", vec2(WIDTH/2+20, HEIGHT/2+100))
     noBox = Button("Cargo Bot:Condition Red", vec2(WIDTH/2-50, HEIGHT/2+100))
@@ -45,12 +48,13 @@ function BuyingScene:init()
     thirdThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+3]["name"])
     fourthThingTheyAreBuyingName = (itemsToSell[(currentLevel-1)*4+4]["name"])
     
-    cashierDialog = ShowDialog("Select only 1 item.", vec2(WIDTH/2-80, HEIGHT/2+150), 180,190)
+    cashierDialog = ShowDialog("Please select only 1 item.", vec2(WIDTH/2-80, HEIGHT/2+150), 180,190)
     cashierDialog:setFont("Courier", 25)
     cashierDialog:show()     
     
     speech.say("Please select only 1 item.")
 end
+
 function BuyingScene:draw()
     -- Codea does not automatically call this method
     background(40, 40, 50)
@@ -74,24 +78,24 @@ function BuyingScene:draw()
     sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20) 
     
     fontSize(15)
-    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
-    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+155, HEIGHT/2-20)
-    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+289, HEIGHT/2-20)
-    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+424, HEIGHT/2-20)  
-    
+    text (string.format("$%.2f", firstThingTheyAreBuyingCost), WIDTH/2+20, HEIGHT/2-20)
+    text (string.format("$%.2f", secondThingTheyAreBuyingCost), WIDTH/2+155, HEIGHT/2-20)
+    text (string.format("$%.2f", thirdThingTheyAreBuyingCost), WIDTH/2+289, HEIGHT/2-20)
+    text (string.format("$%.2f", fourthThingTheyAreBuyingCost), WIDTH/2+424, HEIGHT/2-20)  
+       
     popStyle()
     
-     cashier:draw()
+     theCashier:draw()
      desk:draw()
      basket:draw()
      firstThingTheyAreBuying:draw()
      secondThingTheyAreBuying:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
-     settingsButton:draw()
+     --settingsButton:draw()
      
      backButton:draw()
-     levelsButton:draw()
+     --levelsButton:draw()
      nextButton1:draw()
      cashierDialog:draw()
     
@@ -128,19 +132,23 @@ function BuyingScene:draw()
     end
      if (nextButton1.selected == true) then
          if (currentItemSelected == "") then
-               cashierDialog = ShowDialog("Select 1 item.",vec2(WIDTH/2-80, HEIGHT/2+150), 180,190)
-               cashierDialog:setFont("Courier", 25)
-               cashierDialog:show()
-               end
+            cashierDialog = ShowDialog("Select 1 item.",vec2(WIDTH/2-80, HEIGHT/2+150), 180,190)
+            speech.say("Select 1 item.")
+            nextButton1.selected = false
+            cashierDialog:setFont("Courier", 25)
+            cashierDialog:show()
+        end
     end
 end 
+
 function BuyingScene:touched(touch)
     -- Codea does not automatically call this method   
-    if (firstThingTheyAreBuying:isTouching(basket) == true) then
-        cashierDialog = ShowDialog("That will cost $" .. firstThingTheyAreBuyingCost .. ". Press the next button to pay for the item.", vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
+    if (firstThingTheyAreBuying:isTouching(basket) == true and sayCostOfItem == false) then
+        cashierDialog = ShowDialog(string.format("That will cost $%.2f. Press the next button to pay for the item.", firstThingTheyAreBuyingCost), vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
         cashierDialog:setFont("Courier", 25)
         cashierDialog:show()
         speech.say("That will cost $" .. firstThingTheyAreBuyingCost .. ". Press the next button to pay for the item.")
+        sayCostOfItem = true
         firstThingHasTouched = true
         currentItemSelected = firstThingTheyAreBuying
         currentItemSelectedName = firstThingTheyAreBuyingName
@@ -148,11 +156,13 @@ function BuyingScene:touched(touch)
         secondThingTheyAreBuying.draggable = false
         thirdThingTheyAreBuying.draggable = false
         fourthThingTheyAreBuying.draggable = false
-     elseif (secondThingTheyAreBuying:isTouching(basket) == true) then
-             cashierDialog = ShowDialog("That will cost $" .. secondThingTheyAreBuyingCost .. ". Press the next button to pay for the item.",vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
+        
+     elseif (secondThingTheyAreBuying:isTouching(basket) == true and sayCostOfItem == false) then
+        cashierDialog = ShowDialog(string.format("That will cost $%.2f. Press the next button to pay for the item.", secondThingTheyAreBuyingCost), vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
         cashierDialog:setFont("Courier", 25)
         cashierDialog:show()
         speech.say("That will cost $" .. secondThingTheyAreBuyingCost .. ". Press the next button to pay for the item.")
+        sayCostOfItem = true
         secondThingHasTouched = true
         currentItemSelected = secondThingTheyAreBuying
         currentItemSelectedName = secondThingTheyAreBuyingName
@@ -160,58 +170,67 @@ function BuyingScene:touched(touch)
         firstThingTheyAreBuying.draggable = false
         thirdThingTheyAreBuying.draggable = false
         fourthThingTheyAreBuying.draggable = false
-     elseif (thirdThingTheyAreBuying:isTouching(basket) == true) then  
-        cashierDialog = ShowDialog("That will cost $" .. thirdThingTheyAreBuyingCost .. ". Press the next button to pay for the item.",vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
+        
+     elseif (thirdThingTheyAreBuying:isTouching(basket) == true and sayCostOfItem == false) then
+        cashierDialog = ShowDialog(string.format("That will cost $%.2f. Press the next button to pay for the item.", thirdThingTheyAreBuyingCost), vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
         cashierDialog:setFont("Courier", 25)
-        cashierDialog:show() 
+        cashierDialog:show()
+        speech.say("That will cost $" .. thirdThingTheyAreBuyingCost .. ". Press the next button to pay for the item.")
+        sayCostOfItem = true
         thirdThingHasTouched = true
         currentItemSelected = thirdThingTheyAreBuying
         currentItemSelectedName = thirdThingTheyAreBuyingName
-        currentItemSelectedCost = thirdThingTheyAreBuyingCost 
-        secondThingTheyAreBuying.draggable = false
+        currentItemSelectedCost = thirdThingTheyAreBuyingCost
         firstThingTheyAreBuying.draggable = false
+        secondThingTheyAreBuying.draggable = false
         fourthThingTheyAreBuying.draggable = false
-     elseif (fourthThingTheyAreBuying:isTouching(basket) == true) then
-        cashierDialog= ShowDialog("That will cost $" .. fourthThingTheyAreBuyingCost .. ". Press the next button to pay for the item.",vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
+        
+     elseif (fourthThingTheyAreBuying:isTouching(basket) == true and sayCostOfItem == false) then
+        cashierDialog = ShowDialog(string.format("That will cost $%.2f. Press the next button to pay for the item.", fourthThingTheyAreBuyingCost), vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
         cashierDialog:setFont("Courier", 25)
         cashierDialog:show()
+        speech.say("That will cost $" .. fourthThingTheyAreBuyingCost .. ". Press the next button to pay for the item.")
+        sayCostOfItem = true
         fourthThingHasTouched = true
         currentItemSelected = fourthThingTheyAreBuying
         currentItemSelectedName = fourthThingTheyAreBuyingName
         currentItemSelectedCost = fourthThingTheyAreBuyingCost
+        firstThingTheyAreBuying.draggable = false
         secondThingTheyAreBuying.draggable = false
         thirdThingTheyAreBuying.draggable = false
-        firstThingTheyAreBuying.draggable = false
-        end
+    end
     
     if (firstThingHasTouched == false and touch.state ~= MOVING) then
-        firstThingTheyAreBuying.objectCurrentLocation =    firstThingTheyAreBuying.objectStartLocation 
+        firstThingTheyAreBuying.objectCurrentLocation = firstThingTheyAreBuying.objectStartLocation 
     elseif (firstThingHasTouched == true) then
         firstThingTheyAreBuying.objectCurrentLocation = basket.objectStartLocation 
-        end
+    end
+    
     if (secondThingHasTouched == false and touch.state ~= MOVING) then
         secondThingTheyAreBuying.objectCurrentLocation = secondThingTheyAreBuying.objectStartLocation
     elseif (secondThingHasTouched == true) then
         secondThingTheyAreBuying.objectCurrentLocation = basket.objectStartLocation 
-        end
+    end
+    
     if (thirdThingHasTouched == false and touch.state ~= MOVING) then
         thirdThingTheyAreBuying.objectCurrentLocation = thirdThingTheyAreBuying.objectStartLocation
     elseif (thirdThingHasTouched == true) then
         thirdThingTheyAreBuying.objectCurrentLocation = basket.objectStartLocation 
-        end
+    end
+    
     if (fourthThingHasTouched == false and touch.state ~= MOVING) then
         fourthThingTheyAreBuying.objectCurrentLocation = fourthThingTheyAreBuying.objectStartLocation
     elseif (fourthThingHasTouched == true) then
         fourthThingTheyAreBuying.objectCurrentLocation = basket.objectStartLocation 
-        end
+    end
      
     firstThingTheyAreBuying:touched(touch)
     secondThingTheyAreBuying:touched(touch)
     thirdThingTheyAreBuying:touched(touch)
     fourthThingTheyAreBuying:touched(touch)
-    settingsButton:touched(touch)
+    --settingsButton:touched(touch)
     
-    levelsButton:touched(touch)
+    --levelsButton:touched(touch)
     nextButton1:touched(touch)  
     backButton:touched(touch)
     cashierDialog:touched(touch)
@@ -228,10 +247,12 @@ function BuyingScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
-        end
+    end
+    
     if (yesBox.selected == true) then
         sound(SOUND_HIT, 4344)
         cashierDialog:hide()
+        speech.stop()
         Scene.Change("payingScene") 
     elseif (noBox.selected == true) then
         sound(SOUND_HIT, 4344)
@@ -243,32 +264,33 @@ function BuyingScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
+        speech.stop()
         Scene.Change ("buyingScene")
-        end
-    if (settingsButton.selected == true) then
-        sound(SOUND_HIT, 4344)
-        currentItemSelected = ""
-        currentItemSelectedName = ""
-        currentItemSelectedCost = 0
-        firstThingHasTouched = false
-        secondThingHasTouched = false
-        thirdThingHasTouched = false
-        fourthThingHasTouched = false
-        pointsInLevel = 0
-        Scene.Change ("settingsScene")
     end
-    if (levelsButton.selected == true) then
-        sound(SOUND_HIT, 4344)
-        currentItemSelected = ""
-        currentItemSelectedName = ""
-        currentItemSelectedCost = 0
-        firstThingHasTouched = false
-        secondThingHasTouched = false
-        thirdThingHasTouched = false
-        fourthThingHasTouched = false
-        pointsInLevel = 0
-        Scene.Change ("levelScene")
-    end
+    --if (settingsButton.selected == true) then
+        --sound(SOUND_HIT, 4344)
+        --currentItemSelected = ""
+        --currentItemSelectedName = ""
+        --currentItemSelectedCost = 0
+        --firstThingHasTouched = false
+        --secondThingHasTouched = false
+        --thirdThingHasTouched = false
+        --fourthThingHasTouched = false
+        --pointsInLevel = 0
+        --Scene.Change ("settingsScene")
+    --end
+    --if (levelsButton.selected == true) then
+        --sound(SOUND_HIT, 4344)
+        --currentItemSelected = ""
+        --currentItemSelectedName = ""
+        --currentItemSelectedCost = 0
+        --firstThingHasTouched = false
+        --secondThingHasTouched = false
+        --thirdThingHasTouched = false
+        --fourthThingHasTouched = false
+        --pointsInLevel = 0
+        --Scene.Change ("levelScene")
+    --end
     if (backButton.selected == true) then
         sound(SOUND_HIT, 4344)
         currentItemSelected = ""
@@ -278,6 +300,7 @@ function BuyingScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
+        speech.stop()
         Scene.Change ("mainGameScene")
     end
 end

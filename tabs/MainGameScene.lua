@@ -6,29 +6,36 @@
 -- This is the project for Group #3-2016
 MainGameScene = class()
 
-pointsInLevel = 0
+--pointsInLevel = 0
 
 itemsToSell = {}
+theCashier = nil
 
+textUserSees = "Hello! Welcome to Shop Mart! On the next scene drag 1 item you want to buy to the basket. When you are ready, please press the next button to start buying an item."
 firstThingTheyAreBuying = ""
 secondThingTheyAreBuying = ""
 thirdThingTheyAreBuying = ""
 fourthThingTheyAreBuying = ""
 
 -- Use this function to perform your initial setup
-function MainGameScene:init(x)
+function MainGameScene:init()
     
     -- you can accept and set parameters here
     
-    displayMode(FULLSCREEN)
+    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
     pushStyle() 
-    sprite("Dropbox:Blue Back Circle Button") 
+    speech.stop()
     
-    --if (cashier == girlCashier) then
-    cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
+    if (cashier == "girl") then
+        theCashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
+    else
+        theCashier = SpriteObject("Dropbox:boyCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
+    end
+    
+    --cashier = SpriteObject("Dropbox:girlCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
     --elseif (cashier == boyCashier) then
     --cashier = SpriteObject("Dropbox:boyCashier", vec2(WIDTH/2-220, HEIGHT/2-70))
          --end
@@ -36,7 +43,8 @@ function MainGameScene:init(x)
     basket = SpriteObject("Dropbox:basket", vec2(WIDTH/2-220, HEIGHT/2-220))
     settingsButton = Button("Dropbox:Blue Settings Button", vec2(WIDTH/2-340, HEIGHT/2+320))
     nextButton = Button("Dropbox:Blue Forward Circle Button", vec2(WIDTH/2+435, HEIGHT/2-300))
-    levelsButton = Button ("Dropbox:Blue Level Menu Button", vec2(WIDTH/2-450, HEIGHT/2+320))
+    backButton = Button("Dropbox:Blue Back Circle Button", vec2(WIDTH/2-435, HEIGHT/2-300))
+    --levelsButton = Button ("Dropbox:Blue Level Menu Button", vec2(WIDTH/2-450, HEIGHT/2+320))
     
     pencil = {}
     pencil["item"] = "Dropbox:pencil"
@@ -47,134 +55,116 @@ function MainGameScene:init(x)
     car = {}
     car["item"] = "Dropbox:car"
     car["cost"] = 0.20
-    car["name"] = "car"
-     
+    car["name"] = "car"   
     table.insert(itemsToSell, car)
     
     present = {}
     present["item"] = "Dropbox:present"
     present["cost"] = 0.30
     present["name"] = "present"
-
     table.insert(itemsToSell, present)
     
     basketball = {}
     basketball["item"] = "Dropbox:basketball"
     basketball["cost"] = 1.25
-    basketball["name"] = "basketball"
-      
+    basketball["name"] = "basketball"      
     table.insert(itemsToSell, basketball)
     
     football = {}
     football["item"] = "Dropbox:football"
     football["cost"] = 2.10
-    football["name"] = "football"
-   
+    football["name"] = "football"  
     table.insert(itemsToSell, football)
     
     kitten = {}
     kitten["item"] = "Dropbox:kitten"
     kitten["cost"] = 6.00
-    kitten["name"] = "kitten"
-   
+    kitten["name"] = "kitten"   
     table.insert(itemsToSell, kitten)
     
     glasses = {}
     glasses["item"] = "Dropbox:glasses"
     glasses["cost"] = 8.15
-    glasses["name"] = "glasses"
- 
+    glasses["name"] = "glasses" 
     table.insert(itemsToSell, glasses)
     
     teddyBear = {}
     teddyBear["item"] = "Dropbox:teddyBear"
     teddyBear["cost"] = 3.00
-    teddyBear["name"] = "teddybear"
-   
+    teddyBear["name"] = "teddy bear"   
     table.insert(itemsToSell, teddyBear)
     
     diaper = {}
     diaper["item"] = "Dropbox:diaper"
     diaper["cost"] = 3.50
-    diaper["name"] = "diaper"
-   
+    diaper["name"] = "diaper"  
     table.insert(itemsToSell, diaper)  
     
     ball = {}
     ball["item"] = "Dropbox:ball"
     ball["cost"] = 4.10
-    ball["name"] = "ball"
-    
+    ball["name"] = "ball"  
     table.insert(itemsToSell, ball)  
     
     book = {}
     book["item"] = "Dropbox:book"
     book["cost"] = 5.25
     book["name"] = "book"
-  
     table.insert(itemsToSell, book)
     
     angel = {}
     angel["item"] = "Dropbox:angel"
     angel["cost"] = 2.35
-    angel["name"] = "angel"
-  
+    angel["name"] = "angel"  
     table.insert(itemsToSell, angel)
       
     trophy = {}
     trophy["item"] = "Dropbox:trophy"
     trophy["cost"] = 10.00
-    trophy["name"] = "trophy"
-   
+    trophy["name"] = "trophy"  
     table.insert(itemsToSell, trophy)  
  
     babyWipes = {}
     babyWipes["item"] = "Dropbox:babyWipes"
     babyWipes["cost"] = 12.05
-    babyWipes["name"] = "baby wipes"
-   
+    babyWipes["name"] = "baby wipes"   
     table.insert(itemsToSell, babyWipes)  
     
     babySoap = {}
     babySoap["item"] = "Dropbox:babySoap"
     babySoap["cost"] = 12.35
-    babySoap["name"] = "baby soap"
-   
+    babySoap["name"] = "baby soap"   
     table.insert(itemsToSell, babySoap)  
     
     hairbrush = {}
     hairbrush["item"] = "Dropbox:hairbrush"
     hairbrush["cost"] = 13.00
-    hairbrush["name"] = "hairbrush"
-   
+    hairbrush["name"] = "hairbrush"  
     table.insert(itemsToSell, hairbrush)  
     
     babyBottle = {}
     babyBottle["item"] = "Dropbox:babyBottle"
     babyBottle["cost"] = 14.25
-    babyBottle["name"] = "baby bottle"
-   
+    babyBottle["name"] = "baby bottle"   
     table.insert(itemsToSell, babyBottle)  
     
     sunscreen = {}
     sunscreen["item"] = "Dropbox:sunscreen"
     sunscreen["cost"] = 15.85
-    sunscreen["name"] = "sunscreen"
-   
+    sunscreen["name"] = "sunscreen"  
     table.insert(itemsToSell, sunscreen)  
     
     shoes = {}
     shoes["item"] = "Dropbox:shoes"
     shoes["cost"] = 16.30
-    shoes["name"] = "shoes"
-   
+    shoes["name"] = "shoes"   
     table.insert(itemsToSell, shoes)  
     
     babyDoll = {}
     babyDoll["item"] = "Dropbox:babyDoll"
     babyDoll["cost"] = 19.80
     babyDoll["name"] = "baby doll"
-   
+  
     table.insert(itemsToSell, babyDoll)  
     
     firstThingTheyAreBuying = SpriteObject(itemsToSell[(currentLevel-1)*4+1]["item"], vec2(WIDTH/2+20, HEIGHT/2+120))
@@ -191,12 +181,13 @@ function MainGameScene:init(x)
     thirdThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+3]["cost"])
     fourthThingTheyAreBuyingCost = (itemsToSell[(currentLevel-1)*4+4]["cost"])
     
-    cashierDialog = ShowDialog("Hello! Welcome to Shop Mart! Drag 1 item you want to buy to the basket. Please press the next button to start buying an item.",vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
+    cashierDialog = ShowDialog(textUserSees,vec2(WIDTH/2-5, HEIGHT/2+150), 350,190)
     cashierDialog:setFont("Courier", 25)
     cashierDialog:show()
     
-    speech.say("Hello! Welcome to Shop Mart! Drag 1 item you want to buy to the basket. Please press the next button to start buying an item.")
+    speech.say(textUserSees)
 end
+
 function MainGameScene:draw()
     background(40, 40, 50)
     sprite("SpaceCute:Background",WIDTH/2,HEIGHT/2,WIDTH,HEIGHT)
@@ -210,6 +201,7 @@ function MainGameScene:draw()
     fontSize(30)
     text ("POINTS: " .. pointsInLevel, WIDTH/2+90, HEIGHT/2-340)
     text("NEXT", WIDTH/2+435, HEIGHT/6-111)
+    text("BACK", WIDTH/2-435,HEIGHT/6-111)
 
     sprite("Dropbox:shelf", WIDTH/2+220, HEIGHT/2)
     sprite("Cargo Bot:Condition Green", WIDTH/2+20, HEIGHT/2-20)
@@ -218,46 +210,53 @@ function MainGameScene:draw()
     sprite("Cargo Bot:Condition Green", WIDTH/2+424, HEIGHT/2-20)
     
     fontSize(15)
-    text ("$" .. firstThingTheyAreBuyingCost, WIDTH/2+20, HEIGHT/2-20)
-    text ("$" .. secondThingTheyAreBuyingCost, WIDTH/2+155, HEIGHT/2-20)
-    text ("$" .. thirdThingTheyAreBuyingCost, WIDTH/2+289, HEIGHT/2-20)
-    text ("$" .. fourthThingTheyAreBuyingCost, WIDTH/2+424, HEIGHT/2-20)  
+    --print( string.format( "Bill made $%6.2f dollars at the yard sale.", 11.25017 
+    text (string.format("$%.2f", firstThingTheyAreBuyingCost), WIDTH/2+20, HEIGHT/2-20)
+    text (string.format("$%.2f", secondThingTheyAreBuyingCost), WIDTH/2+155, HEIGHT/2-20)
+    text (string.format("$%.2f", thirdThingTheyAreBuyingCost), WIDTH/2+289, HEIGHT/2-20)
+    text (string.format("$%.2f", fourthThingTheyAreBuyingCost), WIDTH/2+424, HEIGHT/2-20)  
     
     popStyle()
     
-     cashier:draw()
+     --cashier:draw()
+    theCashier:draw()
      desk:draw()
      basket:draw()
      firstThingTheyAreBuying:draw()
      secondThingTheyAreBuying:draw()
      thirdThingTheyAreBuying:draw()
      fourthThingTheyAreBuying:draw()
-     settingsButton:draw()
+     --settingsButton:draw()
      
-     levelsButton:draw()
+     --levelsButton:draw()
+     backButton:draw()
      nextButton:draw()
      cashierDialog:draw()
 end
+
 function MainGameScene:touched(touch)
     -- Codea does not automatically call this method  
     
-    settingsButton:touched(touch)
+    --settingsButton:touched(touch)
     
     nextButton:touched(touch)
-    levelsButton:touched(touch)
+    backButton:touched(touch)
+    --levelsButton:touched(touch)
     cashierDialog:touched(touch)  
      
     if (nextButton.selected == true) then
         sound(SOUND_HIT, 4344)
         cashierDialog:hide()
+        speech.stop()
         Scene.Change("buyingScene")
-        end
-    if (settingsButton.selected == true) then
-        sound(SOUND_HIT, 4344)
-        Scene.Change ("settingsScene")
     end
-    if (levelsButton.selected == true) then
+    --if (settingsButton.selected == true) then
+        --sound(SOUND_HIT, 4344)
+        --Scene.Change ("settingsScene")
+    --end
+    if (backButton.selected == true) then
         sound(SOUND_HIT, 4344)
         Scene.Change ("levelScene")
+        speech.stop()
     end
  end

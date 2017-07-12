@@ -15,7 +15,6 @@ local startTime
 -- Use this function to perform your initial setup for this scene
 function CompanyLogoScene:init()
     -- set up display options
-    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()

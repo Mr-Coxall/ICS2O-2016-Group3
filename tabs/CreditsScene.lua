@@ -15,8 +15,7 @@ local backToHomeButton
 -- Use this function to perform your initial setup for this scene
 function CreditsScene:init()
     -- set up display options
-    supportedOrientations()
-    displayMode(FULLSCREEN)
+    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
@@ -40,6 +39,8 @@ function CreditsScene:draw()
 
     -- This sets the line thickness
     strokeWidth(5)
+    
+    backToHomeButton:draw()
 
     -- Print text on screen here
         text ("Credits", WIDTH/2, HEIGHT/1.11)
@@ -57,7 +58,7 @@ end
 function CreditsScene:touched(touch)
     -- Codea does not automatically call this method
    
-    -- This sets a dark background color
+    backToHomeButton:touched(touch)
     
     if (backToHomeButton.selected == true) then
         Scene.Change ("mainMenuScene")

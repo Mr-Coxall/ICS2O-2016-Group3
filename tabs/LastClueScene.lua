@@ -8,7 +8,7 @@ LastClueScene = class()
 
 function LastClueScene:init(x)
     -- you can accept and set parameters here
-    displayMode(FULLSCREEN)
+    supportedOrientations(LANDSCAPE_ANY)
     noFill()
     noSmooth()
     noStroke()
@@ -191,7 +191,7 @@ function LastClueScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
-        pointsInLevel = 0
+        --pointsInLevel = 0
         Scene.Change ("settingsScene")
     end
     if (levelsButton.selected == true) then
@@ -203,7 +203,7 @@ function LastClueScene:touched(touch)
         secondThingHasTouched = false
         thirdThingHasTouched = false
         fourthThingHasTouched = false
-        pointsInLevel = 0
+        --pointsInLevel = 0
         Scene.Change ("levelScene")
     end
 end
